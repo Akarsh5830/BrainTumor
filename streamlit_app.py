@@ -567,20 +567,20 @@ def main():
                     top_class = class_names[top_idx]
                     confidence = preds[top_idx]
 
-                    # Success message
+                    # Success message with centered confidence
                     st.markdown(f"""
-                    <div style="background: rgba(41, 98, 255, 0.1); padding: 1rem; border-radius: 10px; margin-top: 1rem; border-left: 4px solid {class_info.get(top_class, {}).get('color', 'var(--primary-color)')};">
-                        <h4 style="color: {class_info.get(top_class, {}).get('color', 'var(--primary-color)')}; margin-bottom: 0.5rem;">{class_info.get(top_class, {}).get('icon', '❓')} Prediction: {class_info.get(top_class, {}).get('name', 'Unknown')}</h4>
-                        <p style="color: var(--text-color); font-weight: bold; margin: 0;">Confidence: {confidence*100:.1f}%</p>
+                    <div style="background: rgba(41, 98, 255, 0.1); padding: 1rem; border-radius: 10px; margin-top: 1rem; border-left: 4px solid {class_info.get(top_class, {}).get('color', 'var(--primary-color)')}; text-align: center;">
+                        <h4 style="color: {class_info.get(top_class, {}).get('color', 'var(--primary-color)')}; margin-bottom: 0.5rem; text-align: center;">{class_info.get(top_class, {}).get('icon', '❓')} Prediction: {class_info.get(top_class, {}).get('name', 'Unknown')}</h4>
+                        <p style="color: var(--text-color); font-weight: bold; margin: 0; text-align: center;">Confidence: {confidence*100:.1f}%</p>
                     </div>
                     """, unsafe_allow_html=True)
                     
-                    # Class description
+                    # Class description with entire section centered
                     st.markdown(f"""
                     <div class="result-card" style="text-align: center;">
                         <h4 style="color: var(--text-color);">ℹ️ About {class_info.get(top_class, {}).get('name', 'Unknown')}</h4>
-                        <p style="color: var(--secondary-text-color); line-height: 1.6; margin-bottom: 1rem; text-align: left;">{class_info.get(top_class, {}).get('description', 'No description available.')}</p>
-                        <div style="background: rgba(41, 98, 255, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary-color); margin-bottom: 1rem; text-align: left;">
+                        <p style="color: var(--secondary-text-color); line-height: 1.6; margin-bottom: 1rem;">{class_info.get(top_class, {}).get('description', 'No description available.')}</p>
+                        <div style="background: rgba(41, 98, 255, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary-color); margin-bottom: 1rem;">
                             <p style="color: var(--text-color); margin: 0.5rem 0;"><strong>Severity Level:</strong> {class_info.get(top_class, {}).get('severity', 'N/A')}</p>
                             <p style="color: var(--text-color); margin: 0.5rem 0;"><strong>Treatment:</strong> {class_info.get(top_class, {}).get('treatment', 'N/A')}</p>
                             <p style="color: var(--text-color); margin: 0.5rem 0;"><strong>Prognosis:</strong> {class_info.get(top_class, {}).get('prognosis', 'N/A')}</p>
@@ -637,10 +637,10 @@ def main():
         <div class="result-card fade-in" style="text-align: center;">
             <h2 style="color: var(--text-color); margin-bottom: 1.5rem;">About the Brain Tumor Detector 🧠</h2>
             <p style="color: var(--secondary-text-color); font-size: 1.1rem; line-height: 1.8; text-align: justify; display: inline-block; max-width: 800px;">
-                The Brain Tumor Detector is an **AI-powered system** designed to assist medical professionals in the rapid analysis of brain MRI scans. Leveraging a sophisticated **InceptionV3 deep learning model**, this application can accurately classify MRI images into one of four categories: **Glioma**, **Meningioma**, **Pituitary**, or **No Tumor**.
+                The Brain Tumor Detector is an AI ML powered system designed to assist medical professionals in the rapid analysis of brain MRI scans. Leveraging a sophisticated InceptionV3 deep learning model, this application can accurately classify MRI images into one of four categories: Glioma, Meningioma, Pituitary, or No Tumor.
             </p>
             <p style="color: var(--secondary-text-color); font-size: 1.1rem; line-height: 1.8; text-align: justify; display: inline-block; max-width: 800px;">
-                Our model was trained on a comprehensive dataset of over 10,000 images, achieving an overall accuracy of **82.0%**. This tool aims to provide a reliable, fast, and user-friendly interface for preliminary diagnosis, helping to streamline the workflow in clinical settings. The system is built with a focus on privacy, ensuring that all image processing is done locally and no patient data is stored or transmitted.
+                Our model was trained on a comprehensive dataset of over 10,000 images, achieving an overall accuracy of 82.0%. This tool aims to provide a reliable, fast, and user-friendly interface for preliminary diagnosis, helping to streamline the workflow in clinical settings. The system is built with a focus on privacy, ensuring that all image processing is done locally and no patient data is stored or transmitted.
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -659,3 +659,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+```
