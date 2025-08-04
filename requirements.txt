@@ -7,3 +7,5 @@ tensorflow
 pillow
 numpy
 plotly
+matplotlib
+seaborn
