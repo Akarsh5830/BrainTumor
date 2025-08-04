@@ -19,9 +19,27 @@ st.set_page_config(
 # 🎨 Custom CSS for professional template
 st.markdown("""
 <style>
-    /* Main page background - Clean white */
+    /* New, refined color palette */
+    :root {
+        --primary-color: #2962FF;
+        --secondary-color: #42A5F5;
+        --background-color: #F0F4F8;
+        --card-background: #FFFFFF;
+        --text-color: #263238;
+        --secondary-text-color: #546E7A;
+        --border-color: #E0E0E0;
+        --glioma-color: #D32F2F;
+        --meningioma-color: #FFB300;
+        --notumor-color: #388E3C;
+        --pituitary-color: #673AB7;
+        --success-color: #4CAF50;
+        --error-color: #F44336;
+        --info-color: #2196F3;
+    }
+    
+    /* Main page background - Subtle gray/blue */
     .main .block-container {
-        background: #ffffff;
+        background: var(--background-color);
         min-height: 100vh;
         padding-top: 1rem;
         padding-bottom: 1rem;
@@ -29,45 +47,45 @@ st.markdown("""
     
     /* Improve overall page styling */
     .stApp {
-        background: #ffffff;
+        background: var(--background-color);
     }
     
     /* Better text contrast */
     .main .block-container h1, 
     .main .block-container h2, 
     .main .block-container h3 {
-        color: #2c3e50;
+        color: var(--text-color);
         text-shadow: none;
     }
     
     /* Improve card readability */
     .metric-card, .input-card, .result-card {
-        background: #ffffff;
-        border: 1px solid #e9ecef;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        background: var(--card-background);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         border-radius: 12px;
     }
     
     /* Better text contrast for all content */
     .main .block-container p {
-        color: #2c3e50;
+        color: var(--secondary-text-color);
         font-weight: 500;
         text-shadow: none;
     }
     
     .main .block-container strong {
-        color: #2c3e50;
+        color: var(--text-color);
         font-weight: 600;
         text-shadow: none;
     }
     
     /* Main container styling - Clean */
     .main-header {
-        background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+        background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%);
         padding: 2.5rem;
         border-radius: 20px;
         margin-bottom: 2.5rem;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         border: 1px solid rgba(255,255,255,0.1);
     }
     
@@ -94,61 +112,61 @@ st.markdown("""
     
     /* Card styling - Professional */
     .metric-card {
-        background: rgba(255, 255, 255, 0.98);
+        background: var(--card-background);
         padding: 1.8rem;
         border-radius: 18px;
-        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-        border-left: 6px solid #3498db;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        border-left: 6px solid var(--primary-color);
         margin: 1.2rem 0;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
     .metric-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        box-shadow: 0 15px 50px rgba(0,0,0,0.15);
     }
     
     .input-card {
-        background: rgba(255, 255, 255, 0.98);
+        background: var(--card-background);
         padding: 2.5rem;
         border-radius: 25px;
-        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.08);
         margin: 2.5rem 0;
-        border: 1px solid rgba(52, 152, 219, 0.1);
+        border: 1px solid var(--border-color);
     }
     
     .result-card {
-        background: rgba(255, 255, 255, 0.98);
+        background: var(--card-background);
         padding: 2.5rem;
         border-radius: 25px;
-        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.08);
         margin: 2.5rem 0;
-        border: 1px solid rgba(52, 152, 219, 0.1);
+        border: 1px solid var(--border-color);
     }
     
     /* Button styling - Professional */
     .stButton > button {
-        background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+        background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%);
         color: white;
         border: none;
         border-radius: 30px;
         padding: 0.8rem 2.2rem;
         font-weight: 600;
         font-size: 1rem;
-        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+        box-shadow: 0 6px 20px rgba(41, 98, 255, 0.3);
         transition: all 0.3s ease;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     
     .stButton > button:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
-        background: linear-gradient(90deg, #2980b9 0%, #1f5f8b 100%);
+        box-shadow: 0 8px 25px rgba(41, 98, 255, 0.4);
+        background: linear-gradient(90deg, var(--primary-color) 0%, #1A237E 100%);
     }
     
     /* Progress bar styling - Professional */
     .stProgress > div > div > div > div {
-        background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+        background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%);
     }
     
     /* Sidebar styling - Clean */
@@ -158,19 +176,13 @@ st.markdown("""
     
     /* Improve sidebar text visibility */
     .css-1d391kg p, .css-1d391kg h1, .css-1d391kg h2, .css-1d391kg h3, .css-1d391kg h4 {
-        color: #2c3e50 !important;
+        color: var(--text-color) !important;
         text-shadow: none !important;
-        background: #ffffff;
-        padding: 4px 8px;
-        border-radius: 4px;
-        margin: 2px 0;
-        display: inline-block;
-        border: 1px solid #e9ecef;
     }
     
     /* Success/Error indicators - Better contrast */
     .success-indicator {
-        background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+        background: linear-gradient(135deg, var(--success-color) 0%, #66BB6A 100%);
         color: white;
         padding: 1rem;
         border-radius: 10px;
@@ -179,7 +191,7 @@ st.markdown("""
     }
     
     .warning-indicator {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        background: linear-gradient(135deg, #FFA726 0%, #FF8F00 100%);
         color: white;
         padding: 1rem;
         border-radius: 10px;
@@ -188,7 +200,7 @@ st.markdown("""
     }
     
     .info-indicator {
-        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        background: linear-gradient(135deg, var(--info-color) 0%, #03A9F4 100%);
         color: white;
         padding: 1rem;
         border-radius: 10px;
@@ -208,7 +220,7 @@ st.markdown("""
     
     /* Custom progress bar styling - Better contrast */
     .custom-progress {
-        background: #ecf0f1;
+        background: var(--border-color);
         border-radius: 10px;
         height: 20px;
         margin: 10px 0;
@@ -233,8 +245,9 @@ st.markdown("""
 @st.cache_resource
 def load_trained_model():
     try:
+        # Load .keras model first, then .h5 as fallback
         return load_model('brain_tumor_inceptionv3.keras')
-    except:
+    except Exception:
         return load_model('brain_tumor_inceptionv3.h5')
 
 # 🏷 Class names with detailed descriptions
@@ -242,7 +255,7 @@ class_info = {
     'glioma': {
         'name': 'Glioma',
         'description': 'Gliomas are tumors that arise from glial cells in the brain and spinal cord. They are the most common type of primary brain tumor in adults. Gliomas can be classified into different grades (I-IV) based on their aggressiveness. Grade I and II are considered low-grade, while Grade III and IV are high-grade gliomas. Symptoms may include headaches, seizures, personality changes, and neurological deficits depending on the tumor location.',
-        'color': '#e74c3c',
+        'color': '#D32F2F', # Deep Red
         'icon': '🔴',
         'severity': 'High',
         'treatment': 'Treatment typically involves surgery, radiation therapy, and chemotherapy. The specific approach depends on the tumor grade, location, and patient factors.',
@@ -251,7 +264,7 @@ class_info = {
     'meningioma': {
         'name': 'Meningioma',
         'description': 'Meningiomas are tumors that develop from the meninges, the protective membranes covering the brain and spinal cord. They are usually benign (non-cancerous) and slow-growing. Most meningiomas are found incidentally during imaging for other conditions. Common symptoms include headaches, vision problems, hearing loss, and personality changes. They are more common in women and typically occur in middle-aged to older adults.',
-        'color': '#f39c12',
+        'color': '#FFB300', # Amber
         'icon': '🟡',
         'severity': 'Medium',
         'treatment': 'Treatment options include observation for small, asymptomatic tumors, surgery for larger or symptomatic tumors, and radiation therapy. Complete surgical removal is often curative.',
@@ -260,7 +273,7 @@ class_info = {
     'notumor': {
         'name': 'No Tumor',
         'description': 'Normal brain tissue with no evidence of tumor or abnormal growth detected. The brain appears healthy with normal anatomical structures and no signs of mass lesions, bleeding, or other pathological findings.',
-        'color': '#27ae60',
+        'color': '#388E3C', # Forest Green
         'icon': '🟢',
         'severity': 'None',
         'treatment': 'No treatment required. Regular follow-up imaging may be recommended based on clinical history and risk factors.',
@@ -269,7 +282,7 @@ class_info = {
     'pituitary': {
         'name': 'Pituitary Adenoma',
         'description': 'Pituitary adenomas are tumors that develop in the pituitary gland, a small pea-sized gland located at the base of the brain. The pituitary gland is often called the "master gland" because it controls other hormone-producing glands in the body. These tumors can be functioning (produce excess hormones) or non-functioning (do not produce hormones). Common symptoms include vision problems, headaches, fatigue, and hormonal imbalances affecting growth, reproduction, and metabolism.',
-        'color': '#9b59b6',
+        'color': '#673AB7', # Deep Purple
         'icon': '🟣',
         'severity': 'Medium',
         'treatment': 'Treatment options include surgery (often through the nose), medication to control hormone production, and radiation therapy. The approach depends on tumor size, hormone production, and symptoms.',
@@ -301,7 +314,7 @@ def create_prediction_chart(preds):
     # Create a simple bar chart using Streamlit's built-in components
     st.markdown("""
     <div class="result-card">
-        <h4 style="color: #2c3e50; text-align: center;">📊 Prediction Confidence by Class</h4>
+        <h4 style="color: var(--text-color); text-align: center;">📊 Prediction Confidence by Class</h4>
     </div>
     """, unsafe_allow_html=True)
     
@@ -311,14 +324,14 @@ def create_prediction_chart(preds):
     for idx in sorted_indices:
         cls = class_names[idx]
         prob = preds[idx]
-        color = class_info[cls]['color']
-        icon = class_info[cls]['icon']
-        name = class_info[cls]['name']
+        color = class_info.get(cls, {}).get('color', '#546E7A')
+        icon = class_info.get(cls, {}).get('icon', '❓')
+        name = class_info.get(cls, {}).get('name', 'Unknown')
         
         st.markdown(f"""
-        <div style="background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 10px; margin: 0.5rem 0; border-left: 4px solid {color};">
+        <div style="background: var(--card-background); padding: 1rem; border-radius: 10px; margin: 0.5rem 0; border-left: 4px solid {color}; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                <span style="font-size: 1.1rem; font-weight: 600;">{icon} {name}</span>
+                <span style="font-size: 1.1rem; font-weight: 600; color: var(--text-color);">{icon} {name}</span>
                 <span style="font-weight: bold; color: {color}; font-size: 1.2rem;">{prob*100:.1f}%</span>
             </div>
             <div class="custom-progress">
@@ -333,7 +346,7 @@ def create_prediction_chart(preds):
 def main():
     # Sidebar navigation with clean styling
     st.sidebar.markdown("""
-    <div style="text-align: center; padding: 1.8rem; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); border-radius: 18px; margin-bottom: 2.5rem; box-shadow: 0 8px 25px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.1);">
+    <div style="text-align: center; padding: 1.8rem; background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%); border-radius: 18px; margin-bottom: 2.5rem; box-shadow: 0 8px 25px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.1);">
         <h2 style="color: white; margin-bottom: 0.8rem; font-size: 1.6rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.4); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🧠 Brain Tumor Detector</h2>
         <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 1rem; font-weight: 400; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">AI-Powered Detection System</p>
     </div>
@@ -358,43 +371,43 @@ def main():
     st.sidebar.markdown("---")
 
     # Quick stats in sidebar with real performance values
-    st.sidebar.markdown("""
-    <div style="background: rgba(255,255,255,0.95); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border: 2px solid rgba(0,0,0,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-        <h4 style="color: #1a252f; margin-bottom: 0.5rem; font-weight: 700; text-shadow: none;">📊 Quick Stats</h4>
-        <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">🎯 Model Accuracy: 82.0%</p>
-        <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">⚡ Processing Speed: 0.8s</p>
-        <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">🔍 Classes: 4 tumor types</p>
+    st.sidebar.markdown(f"""
+    <div style="background: var(--card-background); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border: 2px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+        <h4 style="color: var(--text-color); margin-bottom: 0.5rem; font-weight: 700; text-shadow: none;">📊 Quick Stats</h4>
+        <p style="color: var(--secondary-text-color); margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">🎯 Model Accuracy: 82.0%</p>
+        <p style="color: var(--secondary-text-color); margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">⚡ Processing Speed: 0.8s</p>
+        <p style="color: var(--secondary-text-color); margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">🔍 Classes: 4 tumor types</p>
     </div>
     """, unsafe_allow_html=True)
 
     # Model status indicator
-    st.sidebar.markdown("""
-    <div style="background: rgba(255,255,255,0.95); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid #4CAF50; border: 2px solid rgba(0,0,0,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-        <h4 style="color: #1a252f; margin-bottom: 0.5rem; font-weight: 700; text-shadow: none;">🟢 Model Status</h4>
-        <p style="color: #1a252f; margin: 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">✅ All systems operational</p>
-        <p style="color: #1a252f; margin: 0.2rem 0 0 0; font-size: 0.8rem; font-weight: 500; text-shadow: none;">🔒 Privacy protection active</p>
+    st.sidebar.markdown(f"""
+    <div style="background: var(--card-background); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border-left: 4px solid var(--success-color); border: 2px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+        <h4 style="color: var(--text-color); margin-bottom: 0.5rem; font-weight: 700; text-shadow: none;">🟢 Model Status</h4>
+        <p style="color: var(--secondary-text-color); margin: 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">✅ All systems operational</p>
+        <p style="color: var(--secondary-text-color); margin: 0.2rem 0 0 0; font-size: 0.8rem; font-weight: 500; text-shadow: none;">🔒 Privacy protection active</p>
     </div>
     """, unsafe_allow_html=True)
 
     # Help section
     with st.sidebar.expander("❓ Quick Help", expanded=False):
-        st.markdown("""
-        <div style="background: rgba(255,255,255,0.95); padding: 0.5rem; border-radius: 5px; margin-bottom: 0.5rem; border: 1px solid rgba(0,0,0,0.2);">
-            <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>🏠 Home:</strong> App overview and model performance metrics.</p>
+        st.markdown(f"""
+        <div style="background: var(--card-background); padding: 0.5rem; border-radius: 5px; margin-bottom: 0.5rem; border: 1px solid var(--border-color);">
+            <p style="color: var(--text-color); margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>🏠 Home:</strong> App overview and model performance metrics.</p>
         </div>
-        <div style="background: rgba(255,255,255,0.95); padding: 0.5rem; border-radius: 5px; margin-bottom: 0.5rem; border: 1px solid rgba(0,0,0,0.2);">
-            <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>🔍 Analyze:</strong> Upload an individual MRI for analysis</p>
+        <div style="background: var(--card-background); padding: 0.5rem; border-radius: 5px; margin-bottom: 0.5rem; border: 1px solid var(--border-color);">
+            <p style="color: var(--text-color); margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>🔍 Analyze:</strong> Upload an individual MRI for analysis</p>
         </div>
-        <div style="background: rgba(255,255,255,0.95); padding: 0.5rem; border-radius: 5px; border: 1px solid rgba(0,0,0,0.2);">
-            <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>⚙️ Settings:</strong> App information and privacy details</p>
+        <div style="background: var(--card-background); padding: 0.5rem; border-radius: 5px; border: 1px solid var(--border-color);">
+            <p style="color: var(--text-color); margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>⚙️ Settings:</strong> App information and privacy details</p>
         </div>
         """, unsafe_allow_html=True)
 
     # Add footer with creator info
     st.sidebar.markdown("---")
-    st.sidebar.markdown("""
-    <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.95); border-radius: 10px; border: 2px solid rgba(0,0,0,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-        <p style="color: #1a252f; font-size: 0.8rem; margin: 0; font-weight: 600; text-shadow: none;">
+    st.sidebar.markdown(f"""
+    <div style="text-align: center; padding: 1rem; background: var(--card-background); border-radius: 10px; border: 2px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+        <p style="color: var(--text-color); font-size: 0.8rem; margin: 0; font-weight: 600; text-shadow: none;">
             🧠 Brain Tumor Detector v1.0<br>
             Powered by InceptionV3<br>
             <strong>Made by Akarsh Yadav</strong>
@@ -415,29 +428,29 @@ def main():
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            st.markdown("""
+            st.markdown(f"""
             <div class="metric-card">
-                <h3 style="color: #3498db; margin-bottom: 0.5rem;">🎯 Model Accuracy</h3>
-                <h2 style="color: #2c3e50; margin: 0;">82.0%</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Overall Performance</p>
+                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">🎯 Model Accuracy</h3>
+                <h2 style="color: var(--text-color); margin: 0;">82.0%</h2>
+                <p style="color: var(--secondary-text-color); font-size: 0.9rem; margin: 0;">Overall Performance</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col2:
-            st.markdown("""
+            st.markdown(f"""
             <div class="metric-card">
-                <h3 style="color: #3498db; margin-bottom: 0.5rem;">📊 F1 Score</h3>
-                <h2 style="color: #2c3e50; margin: 0;">81.0%</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Weighted Average</p>
+                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">📊 F1 Score</h3>
+                <h2 style="color: var(--text-color); margin: 0;">81.0%</h2>
+                <p style="color: var(--secondary-text-color); font-size: 0.9rem; margin: 0;">Weighted Average</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col3:
-            st.markdown("""
+            st.markdown(f"""
             <div class="metric-card">
-                <h3 style="color: #3498db; margin-bottom: 0.5rem;">⚡ Response Time</h3>
-                <h2 style="color: #2c3e50; margin: 0;">0.8s</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Per Analysis</p>
+                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">⚡ Response Time</h3>
+                <h2 style="color: var(--text-color); margin: 0;">0.8s</h2>
+                <p style="color: var(--secondary-text-color); font-size: 0.9rem; margin: 0;">Per Analysis</p>
             </div>
             """, unsafe_allow_html=True)
         
@@ -445,10 +458,10 @@ def main():
         col1, col2 = st.columns(2)
         
         with col1:
-            st.markdown("""
+            st.markdown(f"""
             <div class="result-card">
-                <h3 style="color: #4facfe; margin-bottom: 1rem;">🎯 Tumor Classification</h3>
-                <ul style="color: #34495e; line-height: 2;">
+                <h3 style="color: var(--info-color); margin-bottom: 1rem;">🎯 Tumor Classification</h3>
+                <ul style="color: var(--secondary-text-color); line-height: 2;">
                     <li>🔴 Glioma - Brain & Spinal Cord</li>
                     <li>🟡 Meningioma - Brain Membranes</li>
                     <li>🟢 No Tumor - Normal Tissue</li>
@@ -458,31 +471,31 @@ def main():
             """, unsafe_allow_html=True)
         
         with col2:
-            st.markdown("""
+            st.markdown(f"""
             <div class="result-card">
-                <h3 style="color: #3498db; margin-bottom: 1rem;">📈 Model Performance</h3>
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📈 Model Performance</h3>
                 <div style="margin-bottom: 1rem;">
-                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Overall Accuracy:</strong> 82.0%</p>
-                    <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); width: 82.0%; height: 100%; border-radius: 10px;"></div>
+                    <p style="margin: 0.5rem 0; color: var(--secondary-text-color);"><strong>Overall Accuracy:</strong> 82.0%</p>
+                    <div style="background: var(--border-color); border-radius: 10px; height: 8px;">
+                        <div style="background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%); width: 82.0%; height: 100%; border-radius: 10px;"></div>
                     </div>
                 </div>
                 <div style="margin-bottom: 1rem;">
-                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Macro Avg F1:</strong> 80.0%</p>
-                    <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); width: 80.0%; height: 100%; border-radius: 10px;"></div>
+                    <p style="margin: 0.5rem 0; color: var(--secondary-text-color);"><strong>Macro Avg F1:</strong> 80.0%</p>
+                    <div style="background: var(--border-color); border-radius: 10px; height: 8px;">
+                        <div style="background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%); width: 80.0%; height: 100%; border-radius: 10px;"></div>
                     </div>
                 </div>
                 <div style="margin-bottom: 1rem;">
-                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Weighted Avg F1:</strong> 81.0%</p>
-                    <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); width: 81.0%; height: 100%; border-radius: 10px;"></div>
+                    <p style="margin: 0.5rem 0; color: var(--secondary-text-color);"><strong>Weighted Avg F1:</strong> 81.0%</p>
+                    <div style="background: var(--border-color); border-radius: 10px; height: 8px;">
+                        <div style="background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%); width: 81.0%; height: 100%; border-radius: 10px;"></div>
                     </div>
                 </div>
                 <div style="margin-bottom: 1rem;">
-                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Test Samples:</strong> 1,142</p>
-                    <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); width: 100%; height: 100%; border-radius: 10px;"></div>
+                    <p style="margin: 0.5rem 0; color: var(--secondary-text-color);"><strong>Test Samples:</strong> 1,142</p>
+                    <div style="background: var(--border-color); border-radius: 10px; height: 8px;">
+                        <div style="background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%); width: 100%; height: 100%; border-radius: 10px;"></div>
                     </div>
                 </div>
             </div>
@@ -499,8 +512,8 @@ def main():
         # File upload section
         st.markdown("""
         <div class="input-card fade-in">
-            <h2 style="color: #2c3e50; margin-bottom: 1rem;">📤 Upload MRI Scan</h2>
-            <p style="color: #34495e; font-size: 1.1rem; margin-bottom: 2rem;">
+            <h2 style="color: var(--text-color); margin-bottom: 1rem;">📤 Upload MRI Scan</h2>
+            <p style="color: var(--secondary-text-color); font-size: 1.1rem; margin-bottom: 2rem;">
                 Upload a brain MRI image for instant tumor detection and classification.
             </p>
         </div>
@@ -539,7 +552,7 @@ def main():
                 # Display uploaded image
                 st.markdown("""
                 <div class="result-card">
-                    <h3 style="color: #2c3e50; text-align: center;">📷 Uploaded MRI Scan</h3>
+                    <h3 style="color: var(--text-color); text-align: center;">📷 Uploaded MRI Scan</h3>
                 </div>
                 """, unsafe_allow_html=True)
                 
@@ -556,21 +569,21 @@ def main():
 
                     # Success message
                     st.markdown(f"""
-                    <div style="background: rgba(52, 152, 219, 0.1); padding: 1rem; border-radius: 10px; margin-top: 1rem; border-left: 4px solid {class_info[top_class]['color']};">
-                        <h4 style="color: {class_info[top_class]['color']}; margin-bottom: 0.5rem;">{class_info[top_class]['icon']} Prediction: {class_info[top_class]['name']}</h4>
-                        <p style="color: #2c3e50; font-weight: bold; margin: 0;">Confidence: {confidence*100:.1f}%</p>
+                    <div style="background: rgba(41, 98, 255, 0.1); padding: 1rem; border-radius: 10px; margin-top: 1rem; border-left: 4px solid {class_info.get(top_class, {}).get('color', 'var(--primary-color)')};">
+                        <h4 style="color: {class_info.get(top_class, {}).get('color', 'var(--primary-color)')}; margin-bottom: 0.5rem;">{class_info.get(top_class, {}).get('icon', '❓')} Prediction: {class_info.get(top_class, {}).get('name', 'Unknown')}</h4>
+                        <p style="color: var(--text-color); font-weight: bold; margin: 0;">Confidence: {confidence*100:.1f}%</p>
                     </div>
                     """, unsafe_allow_html=True)
                     
                     # Class description
                     st.markdown(f"""
-                    <div class="result-card">
-                        <h4 style="color: #2c3e50;">ℹ️ About {class_info[top_class]['name']}</h4>
-                        <p style="color: #7f8c8d; line-height: 1.6; margin-bottom: 1rem;">{class_info[top_class]['description']}</p>
-                        <div style="background: rgba(52, 152, 219, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #3498db; margin-bottom: 1rem;">
-                            <p style="color: #2c3e50; margin: 0.5rem 0;"><strong>Severity Level:</strong> {class_info[top_class]['severity']}</p>
-                            <p style="color: #2c3e50; margin: 0.5rem 0;"><strong>Treatment:</strong> {class_info[top_class]['treatment']}</p>
-                            <p style="color: #2c3e50; margin: 0.5rem 0;"><strong>Prognosis:</strong> {class_info[top_class]['prognosis']}</p>
+                    <div class="result-card" style="text-align: center;">
+                        <h4 style="color: var(--text-color);">ℹ️ About {class_info.get(top_class, {}).get('name', 'Unknown')}</h4>
+                        <p style="color: var(--secondary-text-color); line-height: 1.6; margin-bottom: 1rem; text-align: left;">{class_info.get(top_class, {}).get('description', 'No description available.')}</p>
+                        <div style="background: rgba(41, 98, 255, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary-color); margin-bottom: 1rem; text-align: left;">
+                            <p style="color: var(--text-color); margin: 0.5rem 0;"><strong>Severity Level:</strong> {class_info.get(top_class, {}).get('severity', 'N/A')}</p>
+                            <p style="color: var(--text-color); margin: 0.5rem 0;"><strong>Treatment:</strong> {class_info.get(top_class, {}).get('treatment', 'N/A')}</p>
+                            <p style="color: var(--text-color); margin: 0.5rem 0;"><strong>Prognosis:</strong> {class_info.get(top_class, {}).get('prognosis', 'N/A')}</p>
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
@@ -587,10 +600,10 @@ def main():
             # Upload prompt
             st.markdown("""
             <div class="result-card fade-in">
-                <h3 style="color: #2c3e50;">📤 Upload Your MRI Image</h3>
-                <p style="color: #7f8c8d;">Use the file uploader above to upload a brain MRI image for analysis.</p>
+                <h3 style="color: var(--text-color);">📤 Upload Your MRI Image</h3>
+                <p style="color: var(--secondary-text-color);">Use the file uploader above to upload a brain MRI image for analysis.</p>
                 <div style="font-size: 4rem; margin: 2rem 0; text-align: center;">🧠</div>
-                <p style="color: #7f8c8d; font-size: 0.9rem; text-align: center;">
+                <p style="color: var(--secondary-text-color); font-size: 0.9rem; text-align: center;">
                     Supported formats: JPG, PNG, JPEG<br>
                     Recommended: Clear, high-resolution images
                 </p>
@@ -606,36 +619,36 @@ def main():
         """, unsafe_allow_html=True)
         
         # System Information
-        st.markdown("""
+        st.markdown(f"""
         <div class="result-card fade-in">
-            <h3 style="color: #4facfe; margin-bottom: 1rem;">📋 System Information</h3>
-            <div style="background: rgba(79, 172, 254, 0.1); padding: 1rem; border-radius: 10px; border-left: 4px solid #4facfe;">
-                <p style="margin: 0.5rem 0; color: #2c3e50; font-weight: 600;"><strong>Model Type:</strong> InceptionV3 Deep Learning</p>
-                <p style="margin: 0.5rem 0; color: #2c3e50; font-weight: 600;"><strong>Framework:</strong> TensorFlow/Keras</p>
-                <p style="margin: 0.5rem 0; color: #2c3e50; font-weight: 600;"><strong>Classes:</strong> 4 tumor types</p>
-                <p style="margin: 0.5rem 0; color: #2c3e50; font-weight: 600;"><strong>Last Updated:</strong> """ + datetime.now().strftime("%B %d, %Y") + """</p>
-                <p style="margin: 0.5rem 0; color: #2c3e50; font-weight: 600;"><strong>Made by:</strong> Akarsh Yadav</p>
+            <h3 style="color: var(--info-color); margin-bottom: 1rem;">📋 System Information</h3>
+            <div style="background: rgba(41, 98, 255, 0.1); padding: 1rem; border-radius: 10px; border-left: 4px solid var(--info-color);">
+                <p style="margin: 0.5rem 0; color: var(--text-color); font-weight: 600;"><strong>Model Type:</strong> InceptionV3 Deep Learning</p>
+                <p style="margin: 0.5rem 0; color: var(--text-color); font-weight: 600;"><strong>Framework:</strong> TensorFlow/Keras</p>
+                <p style="margin: 0.5rem 0; color: var(--text-color); font-weight: 600;"><strong>Classes:</strong> 4 tumor types</p>
+                <p style="margin: 0.5rem 0; color: var(--text-color); font-weight: 600;"><strong>Last Updated:</strong> """ + datetime.now().strftime("%B %d, %Y") + """</p>
+                <p style="margin: 0.5rem 0; color: var(--text-color); font-weight: 600;"><strong>Made by:</strong> Akarsh Yadav</p>
             </div>
         </div>
         """, unsafe_allow_html=True)
         
         # About section with centered layout
-        st.markdown("""
+        st.markdown(f"""
         <div class="result-card fade-in" style="text-align: center;">
-            <h2 style="color: #2c3e50; margin-bottom: 1.5rem;">About the Brain Tumor Detector 🧠</h2>
-            <p style="color: #34495e; font-size: 1.1rem; line-height: 1.8; text-align: justify; display: inline-block; max-width: 800px;">
+            <h2 style="color: var(--text-color); margin-bottom: 1.5rem;">About the Brain Tumor Detector 🧠</h2>
+            <p style="color: var(--secondary-text-color); font-size: 1.1rem; line-height: 1.8; text-align: justify; display: inline-block; max-width: 800px;">
                 The Brain Tumor Detector is an **AI-powered system** designed to assist medical professionals in the rapid analysis of brain MRI scans. Leveraging a sophisticated **InceptionV3 deep learning model**, this application can accurately classify MRI images into one of four categories: **Glioma**, **Meningioma**, **Pituitary**, or **No Tumor**.
             </p>
-            <p style="color: #34495e; font-size: 1.1rem; line-height: 1.8; text-align: justify; display: inline-block; max-width: 800px;">
+            <p style="color: var(--secondary-text-color); font-size: 1.1rem; line-height: 1.8; text-align: justify; display: inline-block; max-width: 800px;">
                 Our model was trained on a comprehensive dataset of over 10,000 images, achieving an overall accuracy of **82.0%**. This tool aims to provide a reliable, fast, and user-friendly interface for preliminary diagnosis, helping to streamline the workflow in clinical settings. The system is built with a focus on privacy, ensuring that all image processing is done locally and no patient data is stored or transmitted.
             </p>
         </div>
         """, unsafe_allow_html=True)
 
         # Privacy notice
-        st.markdown("""
+        st.markdown(f"""
         <div class="success-indicator fade-in">
-            <div style="background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); padding: 1.5rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">
+            <div style="background: linear-gradient(135deg, var(--success-color) 0%, #66BB6A 100%); padding: 1.5rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">
                 <h4 style="color: white; margin-bottom: 1rem; text-align: center; font-size: 1.2rem;">🔒 Privacy Protection Active</h4>
                 <p style="color: white; margin: 0; text-align: center; font-size: 1rem; line-height: 1.5;">
                     <strong>Patient privacy is protected.</strong> All uploaded images are processed locally and no patient data is stored or transmitted.
