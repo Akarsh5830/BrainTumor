@@ -20,9 +20,9 @@ st.set_page_config(
 # 🎨 Custom CSS for professional template
 st.markdown("""
 <style>
-    /* Main page background - Professional gradient */
+    /* Main page background - Clean white */
     .main .block-container {
-        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        background: #ffffff;
         min-height: 100vh;
         padding-top: 1rem;
         padding-bottom: 1rem;
@@ -30,46 +30,45 @@ st.markdown("""
     
     /* Improve overall page styling */
     .stApp {
-        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        background: #ffffff;
     }
     
     /* Better text contrast */
     .main .block-container h1, 
     .main .block-container h2, 
     .main .block-container h3 {
-        color: #ffffff;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        color: #2c3e50;
+        text-shadow: none;
     }
     
     /* Improve card readability */
     .metric-card, .input-card, .result-card {
-        background: rgba(255, 255, 255, 0.95);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         border-radius: 12px;
-        backdrop-filter: blur(10px);
     }
     
     /* Better text contrast for all content */
     .main .block-container p {
-        color: #ffffff;
+        color: #2c3e50;
         font-weight: 500;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        text-shadow: none;
     }
     
     .main .block-container strong {
-        color: #ffffff;
+        color: #2c3e50;
         font-weight: 600;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        text-shadow: none;
     }
     
-    /* Main container styling - Professional */
+    /* Main container styling - Clean */
     .main-header {
-        background: linear-gradient(90deg, #2c3e50 0%, #34495e 100%);
+        background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
         padding: 2.5rem;
         border-radius: 20px;
         margin-bottom: 2.5rem;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
         border: 1px solid rgba(255,255,255,0.1);
     }
     
@@ -153,20 +152,21 @@ st.markdown("""
         background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
     }
     
-    /* Sidebar styling - Professional */
+    /* Sidebar styling - Clean */
     .css-1d391kg {
-        background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+        background: #f8f9fa;
     }
     
     /* Improve sidebar text visibility */
     .css-1d391kg p, .css-1d391kg h1, .css-1d391kg h2, .css-1d391kg h3, .css-1d391kg h4 {
-        color: #ffffff !important;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
-        background: rgba(255, 255, 255, 0.1);
+        color: #2c3e50 !important;
+        text-shadow: none !important;
+        background: #ffffff;
         padding: 4px 8px;
         border-radius: 4px;
         margin: 2px 0;
         display: inline-block;
+        border: 1px solid #e9ecef;
     }
     
     /* Success/Error indicators - Better contrast */
@@ -329,10 +329,10 @@ def create_radar_chart_alternative(preds):
     </div>
     """, unsafe_allow_html=True)
     
-    # Create a simple radar-like visualization using HTML/CSS
+    # Create vertically stacked prediction blocks
     radar_html = """
-    <div style="background: rgba(255, 255, 255, 0.95); padding: 1.5rem; border-radius: 15px; text-align: center;">
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem;">
+    <div style="background: #ffffff; padding: 1.5rem; border-radius: 15px; text-align: center;">
+        <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem;">
     """
     
     for i, (cls, prob) in enumerate(zip(class_names, preds)):
@@ -357,9 +357,9 @@ def create_radar_chart_alternative(preds):
 
 # 🎯 Main App
 def main():
-    # Sidebar navigation with professional styling
+    # Sidebar navigation with clean styling
     st.sidebar.markdown("""
-    <div style="text-align: center; padding: 1.8rem; background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); border-radius: 18px; margin-bottom: 2.5rem; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+    <div style="text-align: center; padding: 1.8rem; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); border-radius: 18px; margin-bottom: 2.5rem; box-shadow: 0 8px 25px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.1);">
         <h2 style="color: white; margin-bottom: 0.8rem; font-size: 1.6rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.4); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🧠 Brain Tumor Detector</h2>
         <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 1rem; font-weight: 400; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">AI-Powered Detection System</p>
     </div>
