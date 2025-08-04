@@ -1,15 +1,3 @@
-Let's improve the UI and enhance the "Home" page with more useful details for a better user experience. I'll make the following changes:
-
-  * **Refine CSS**: I'll make minor tweaks to the custom CSS to ensure a cleaner, more modern look.
-  * **Update "Home" page**: Instead of just showing static metrics, I'll add a more detailed overview of the model's purpose, the technology behind it, and a clear call to action to "Analyze" an image. This provides more value than a simple dashboard.
-  * **Simplify the "Analyze" page**: The analysis page will now focus solely on the core task of uploading an image and viewing the results.
-  * **Compress the "Settings" page**: The `About` section will be integrated into the `Home` page, leaving the `Settings` page for technical and privacy information.
-
------
-
-### Full Code with UI Improvements
-
-```python
 import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.models import load_model
@@ -590,4 +578,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+
