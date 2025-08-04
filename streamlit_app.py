@@ -4,6 +4,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import numpy as np
 from PIL import Image
+import json  # 🪄 CHANGE: for dynamic class names
 
 # 🎨 Page config
 st.set_page_config(
@@ -30,15 +31,16 @@ def load_trained_model():
 
 model = load_trained_model()
 
-# 🏷 Class names
-class_names = ['glioma', 'meningioma', 'notumor', 'pituitary']
+# 🏷 Load class names dynamically (more maintainable)
+with open('class_names.json') as f:   # 🪄 CHANGE
+    class_names = json.load(f)
 
 # 📊 Predict function
 def predict_image(img):
-    img = img.resize((224, 224))  # match model input size
+    img = img.resize((224, 224))
     img_array = image.img_to_array(img) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
-    preds = model.predict(img_array)[0]
+    preds = model.predict(img_array, verbose=0)[0]  # 🪄 CHANGE: suppress tf progress bar
     return preds
 
 # 📷 Main area
@@ -47,7 +49,7 @@ if uploaded_file:
     st.image(img, caption='Uploaded MRI Image', use_column_width=True)
 
     preds = predict_image(img)
-    top_idx = np.argmax(preds)
+    top_idx = int(np.argmax(preds))
     top_class = class_names[top_idx]
     confidence = preds[top_idx]
 
@@ -63,5 +65,4 @@ else:
 
 # 📌 Footer
 st.markdown("---")
-st.caption("Made with ❤️ by [Your Name or Team] • Powered by Streamlit & TensorFlow")
-
+st.caption("Made with ❤️ by Akarsh Yadav • Powered by Streamlit & TensorFlow")
