@@ -11,7 +11,7 @@ from datetime import datetime
 
 # 🎨 Page config with wide layout
 st.set_page_config(
-    page_title="🧠 BrainGuard AI",
+    page_title="🧠 Brain Tumor Detector",
     page_icon="🧠",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -20,166 +20,167 @@ st.set_page_config(
 # 🎨 Custom CSS for modern styling with updated color scheme
 st.markdown("""
 <style>
-    /* Main page background - Updated color scheme */
+    /* Main page background - Simplified design */
     .main .block-container {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #f8f9fa;
         min-height: 100vh;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     }
     
     /* Improve overall page styling */
     .stApp {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: #f8f9fa;
     }
     
     /* Better text contrast */
     .main .block-container h1, 
     .main .block-container h2, 
     .main .block-container h3 {
-        color: #ffffff;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        color: #2c3e50;
+        text-shadow: none;
     }
     
     /* Improve card readability */
     .metric-card, .input-card, .result-card {
-        backdrop-filter: blur(10px);
-        background: rgba(255, 255, 255, 0.95);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        background: white;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border-radius: 8px;
     }
     
     /* Better text contrast for all content */
     .main .block-container p {
-        color: #ffffff;
-        font-weight: 500;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        color: #2c3e50;
+        font-weight: 400;
+        text-shadow: none;
     }
     
     .main .block-container strong {
-        color: #ffffff;
+        color: #2c3e50;
         font-weight: 600;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        text-shadow: none;
     }
     
-    /* Main container styling - Updated colors */
+    /* Main container styling - Simplified */
     .main-header {
-        background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
-        padding: 2rem;
-        border-radius: 15px;
-        margin-bottom: 2rem;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        background: #007bff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     
     .main-header h1 {
         color: white;
-        font-size: 3rem;
-        font-weight: 800;
+        font-size: 2.5rem;
+        font-weight: 700;
         text-align: center;
         margin: 0;
-        text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-        letter-spacing: 1px;
+        text-shadow: none;
+        letter-spacing: 0.5px;
     }
     
     .main-header p {
-        color: rgba(255,255,255,0.95);
+        color: rgba(255,255,255,0.9);
         text-align: center;
-        font-size: 1.2rem;
-        font-weight: 500;
+        font-size: 1rem;
+        font-weight: 400;
         margin: 0.5rem 0 0 0;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        text-shadow: none;
     }
     
-    /* Card styling - Updated colors */
+    /* Card styling - Simplified */
     .metric-card {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 1.5rem;
-        border-radius: 15px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-        border-left: 5px solid #4facfe;
-        margin: 1rem 0;
+        background: white;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border-left: 4px solid #007bff;
+        margin: 0.5rem 0;
     }
     
     .input-card {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-        margin: 2rem 0;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin: 1rem 0;
     }
     
     .result-card {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-        margin: 2rem 0;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin: 1rem 0;
     }
     
-    /* Button styling - Updated colors */
+    /* Button styling - Simplified */
     .stButton > button {
-        background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+        background: #007bff;
         color: white;
         border: none;
-        border-radius: 25px;
-        padding: 0.75rem 2rem;
-        font-weight: 600;
-        box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
-        transition: all 0.3s ease;
+        border-radius: 6px;
+        padding: 0.5rem 1.5rem;
+        font-weight: 500;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: all 0.2s ease;
     }
     
     .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(79, 172, 254, 0.6);
+        background: #0056b3;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     
-    /* Progress bar styling - Updated colors */
+    /* Progress bar styling - Simplified */
     .stProgress > div > div > div > div {
-        background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+        background: #007bff;
     }
     
-    /* Sidebar styling - Updated colors */
+    /* Sidebar styling - Simplified */
     .css-1d391kg {
-        background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        background: #f8f9fa;
     }
     
     /* Improve sidebar text visibility */
     .css-1d391kg p, .css-1d391kg h1, .css-1d391kg h2, .css-1d391kg h3, .css-1d391kg h4 {
-        color: #ffffff !important;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
-        background: rgba(255, 255, 255, 0.1);
+        color: #2c3e50 !important;
+        text-shadow: none !important;
+        background: white;
         padding: 4px 8px;
         border-radius: 4px;
         margin: 2px 0;
         display: inline-block;
+        border: 1px solid #e9ecef;
     }
     
-    /* Success/Error indicators - Updated colors */
+    /* Success/Error indicators - Simplified */
     .success-indicator {
-        background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+        background: #28a745;
         color: white;
-        padding: 1rem;
-        border-radius: 10px;
+        padding: 0.75rem;
+        border-radius: 6px;
         text-align: center;
-        font-weight: 600;
+        font-weight: 500;
     }
     
     .warning-indicator {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        color: white;
-        padding: 1rem;
-        border-radius: 10px;
+        background: #ffc107;
+        color: #212529;
+        padding: 0.75rem;
+        border-radius: 6px;
         text-align: center;
-        font-weight: 600;
+        font-weight: 500;
     }
     
     .info-indicator {
-        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        background: #007bff;
         color: white;
-        padding: 1rem;
-        border-radius: 10px;
+        padding: 0.75rem;
+        border-radius: 6px;
         text-align: center;
-        font-weight: 600;
+        font-weight: 500;
     }
     
     /* Animation */
@@ -192,25 +193,25 @@ st.markdown("""
         animation: fadeIn 0.6s ease-out;
     }
     
-    /* Custom progress bar styling - Updated colors */
+    /* Custom progress bar styling - Simplified */
     .custom-progress {
-        background: #ecf0f1;
-        border-radius: 10px;
-        height: 20px;
-        margin: 10px 0;
+        background: #e9ecef;
+        border-radius: 4px;
+        height: 16px;
+        margin: 8px 0;
         overflow: hidden;
     }
     
     .custom-progress-fill {
         height: 100%;
-        border-radius: 10px;
-        transition: width 0.5s ease;
+        border-radius: 4px;
+        transition: width 0.3s ease;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-weight: bold;
-        font-size: 12px;
+        font-weight: 500;
+        font-size: 11px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -316,8 +317,8 @@ def create_radar_chart_alternative(preds):
     
     # Create a simple radar-like visualization using HTML/CSS
     radar_html = """
-    <div style="background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 15px; text-align: center;">
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem;">
+    <div style="background: white; padding: 1rem; border-radius: 8px; text-align: center;">
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 0.5rem;">
     """
     
     for i, (cls, prob) in enumerate(zip(class_names, preds)):
@@ -326,10 +327,10 @@ def create_radar_chart_alternative(preds):
         name = class_info[cls]['name']
         
         radar_html += f"""
-        <div style="background: {color}; color: white; padding: 1rem; border-radius: 10px; text-align: center;">
-            <div style="font-size: 2rem; margin-bottom: 0.5rem;">{icon}</div>
-            <div style="font-weight: bold; margin-bottom: 0.5rem;">{name}</div>
-            <div style="font-size: 1.5rem; font-weight: bold;">{prob*100:.1f}%</div>
+        <div style="background: {color}; color: white; padding: 0.75rem; border-radius: 6px; text-align: center;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">{icon}</div>
+            <div style="font-weight: 600; margin-bottom: 0.25rem; font-size: 0.9rem;">{name}</div>
+            <div style="font-size: 1.2rem; font-weight: 600;">{prob*100:.1f}%</div>
         </div>
         """
     
@@ -342,11 +343,11 @@ def create_radar_chart_alternative(preds):
 
 # 🎯 Main App
 def main():
-    # Sidebar navigation with improved styling
+    # Sidebar navigation with simplified styling
     st.sidebar.markdown("""
-    <div style="text-align: center; padding: 1.5rem; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 6px 20px rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.1);">
-        <h2 style="color: white; margin-bottom: 0.5rem; font-size: 1.5rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">🧠 BrainGuard AI</h2>
-        <p style="color: rgba(255,255,255,0.95); margin: 0; font-size: 0.9rem; font-weight: 500; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">Advanced Brain Tumor Detection</p>
+    <div style="text-align: center; padding: 1rem; background: #007bff; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <h2 style="color: white; margin-bottom: 0.5rem; font-size: 1.3rem; font-weight: 600; text-shadow: none;">🧠 Brain Tumor Detector</h2>
+        <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 0.85rem; font-weight: 400; text-shadow: none;">AI-Powered Detection System</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -412,9 +413,9 @@ def main():
     # Add footer with creator info
     st.sidebar.markdown("---")
     st.sidebar.markdown("""
-    <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.95); border-radius: 10px; border: 2px solid rgba(0,0,0,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-        <p style="color: #1a252f; font-size: 0.8rem; margin: 0; font-weight: 600; text-shadow: none;">
-            🧠 BrainGuard AI v1.0<br>
+    <div style="text-align: center; padding: 0.75rem; background: white; border-radius: 6px; border: 1px solid #e9ecef; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <p style="color: #2c3e50; font-size: 0.75rem; margin: 0; font-weight: 500; text-shadow: none;">
+            🧠 Brain Tumor Detector v1.0<br>
             Powered by InceptionV3<br>
             <strong>Made by Akarsh Yadav</strong>
         </p>
@@ -425,8 +426,8 @@ def main():
         # Main header
         st.markdown("""
         <div class="main-header fade-in">
-            <h1 style="text-shadow: 3px 3px 6px rgba(0,0,0,0.4); font-weight: 800;">🧠 BrainGuard AI</h1>
-            <p style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3); font-weight: 500;">Advanced AI-Powered Brain Tumor Detection System</p>
+            <h1 style="text-shadow: none; font-weight: 700;">🧠 Brain Tumor Detector</h1>
+            <p style="text-shadow: none; font-weight: 400;">AI-Powered Brain Tumor Detection System</p>
         </div>
         """, unsafe_allow_html=True)
         
@@ -436,36 +437,36 @@ def main():
         with col1:
             st.markdown("""
             <div class="metric-card">
-                <h3 style="color: #4facfe; margin-bottom: 0.5rem;">🎯 Model Accuracy</h3>
+                <h3 style="color: #007bff; margin-bottom: 0.5rem;">🎯 Model Accuracy</h3>
                 <h2 style="color: #2c3e50; margin: 0;">94.2%</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">InceptionV3 Performance</p>
+                <p style="color: #6c757d; font-size: 0.85rem; margin: 0;">InceptionV3 Performance</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col2:
             st.markdown("""
             <div class="metric-card">
-                <h3 style="color: #4facfe; margin-bottom: 0.5rem;">⚡ Processing Speed</h3>
+                <h3 style="color: #007bff; margin-bottom: 0.5rem;">⚡ Processing Speed</h3>
                 <h2 style="color: #2c3e50; margin: 0;">0.6s</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Per MRI Scan</p>
+                <p style="color: #6c757d; font-size: 0.85rem; margin: 0;">Per MRI Scan</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col3:
             st.markdown("""
             <div class="metric-card">
-                <h3 style="color: #4facfe; margin-bottom: 0.5rem;">🔍 Tumor Types</h3>
+                <h3 style="color: #007bff; margin-bottom: 0.5rem;">🔍 Tumor Types</h3>
                 <h2 style="color: #2c3e50; margin: 0;">4</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Detectable Classes</p>
+                <p style="color: #6c757d; font-size: 0.85rem; margin: 0;">Detectable Classes</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col4:
             st.markdown("""
             <div class="metric-card">
-                <h3 style="color: #4facfe; margin-bottom: 0.5rem;">📊 Dataset</h3>
+                <h3 style="color: #007bff; margin-bottom: 0.5rem;">📊 Dataset</h3>
                 <h2 style="color: #2c3e50; margin: 0;">8.5K</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Training Images</p>
+                <p style="color: #6c757d; font-size: 0.85rem; margin: 0;">Training Images</p>
             </div>
             """, unsafe_allow_html=True)
         
@@ -475,8 +476,8 @@ def main():
         with col1:
             st.markdown("""
             <div class="result-card">
-                <h3 style="color: #4facfe; margin-bottom: 1rem;">🎯 Tumor Classification</h3>
-                <ul style="color: #34495e; line-height: 2;">
+                <h3 style="color: #007bff; margin-bottom: 1rem;">🎯 Tumor Classification</h3>
+                <ul style="color: #34495e; line-height: 1.8;">
                     <li>🔴 Glioma - Brain & Spinal Cord</li>
                     <li>🟡 Meningioma - Brain Membranes</li>
                     <li>🟢 No Tumor - Normal Tissue</li>
@@ -488,29 +489,29 @@ def main():
         with col2:
             st.markdown("""
             <div class="result-card">
-                <h3 style="color: #4facfe; margin-bottom: 1rem;">📈 Model Performance</h3>
+                <h3 style="color: #007bff; margin-bottom: 1rem;">📈 Model Performance</h3>
                 <div style="margin-bottom: 1rem;">
                     <p style="margin: 0.5rem 0; color: #34495e;"><strong>Overall Accuracy:</strong> 94.2%</p>
-                    <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); width: 94.2%; height: 100%; border-radius: 10px;"></div>
+                    <div style="background: #e9ecef; border-radius: 4px; height: 6px;">
+                        <div style="background: #007bff; width: 94.2%; height: 100%; border-radius: 4px;"></div>
                     </div>
                 </div>
                 <div style="margin-bottom: 1rem;">
                     <p style="margin: 0.5rem 0; color: #34495e;"><strong>Precision:</strong> 93.8%</p>
-                    <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); width: 93.8%; height: 100%; border-radius: 10px;"></div>
+                    <div style="background: #e9ecef; border-radius: 4px; height: 6px;">
+                        <div style="background: #007bff; width: 93.8%; height: 100%; border-radius: 4px;"></div>
                     </div>
                 </div>
                 <div style="margin-bottom: 1rem;">
                     <p style="margin: 0.5rem 0; color: #34495e;"><strong>Recall:</strong> 94.5%</p>
-                    <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); width: 94.5%; height: 100%; border-radius: 10px;"></div>
+                    <div style="background: #e9ecef; border-radius: 4px; height: 6px;">
+                        <div style="background: #007bff; width: 94.5%; height: 100%; border-radius: 4px;"></div>
                     </div>
                 </div>
                 <div style="margin-bottom: 1rem;">
                     <p style="margin: 0.5rem 0; color: #34495e;"><strong>F1-Score:</strong> 94.1%</p>
-                    <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); width: 94.1%; height: 100%; border-radius: 10px;"></div>
+                    <div style="background: #e9ecef; border-radius: 4px; height: 6px;">
+                        <div style="background: #007bff; width: 94.1%; height: 100%; border-radius: 4px;"></div>
                     </div>
                 </div>
             </div>
@@ -688,7 +689,7 @@ def main():
         
         st.markdown("""
         <div class="result-card fade-in">
-            <h3 style="color: #4facfe; margin-bottom: 1rem;">🎯 Model Architecture</h3>
+            <h3 style="color: #007bff; margin-bottom: 1rem;">🎯 Model Architecture</h3>
             <p style="color: #34495e; line-height: 1.6;">
                 <strong>InceptionV3:</strong> A deep convolutional neural network architecture developed by Google. 
                 It uses inception modules to efficiently process images at multiple scales simultaneously.
@@ -702,8 +703,8 @@ def main():
         with col1:
             st.markdown("""
             <div class="result-card">
-                <h3 style="color: #4facfe; margin-bottom: 1rem;">📊 Performance Metrics</h3>
-                <ul style="color: #34495e; line-height: 2;">
+                <h3 style="color: #007bff; margin-bottom: 1rem;">📊 Performance Metrics</h3>
+                <ul style="color: #34495e; line-height: 1.8;">
                     <li>🎯 Overall Accuracy: 94.2%</li>
                     <li>📈 Precision: 93.8%</li>
                     <li>📉 Recall: 94.5%</li>
@@ -715,8 +716,8 @@ def main():
         with col2:
             st.markdown("""
             <div class="result-card">
-                <h3 style="color: #4facfe; margin-bottom: 1rem;">🔧 Technical Details</h3>
-                <ul style="color: #34495e; line-height: 2;">
+                <h3 style="color: #007bff; margin-bottom: 1rem;">🔧 Technical Details</h3>
+                <ul style="color: #34495e; line-height: 1.8;">
                     <li>🖼️ Input Size: 224x224 pixels</li>
                     <li>🧠 Architecture: InceptionV3</li>
                     <li>📚 Training Data: 8,500+ images</li>
@@ -735,8 +736,8 @@ def main():
         
         st.markdown("""
         <div class="result-card fade-in">
-            <h3 style="color: #4facfe; margin-bottom: 1rem;">📋 System Information</h3>
-            <div style="background: rgba(79, 172, 254, 0.1); padding: 1rem; border-radius: 10px; border-left: 4px solid #4facfe;">
+            <h3 style="color: #007bff; margin-bottom: 1rem;">📋 System Information</h3>
+            <div style="background: rgba(0, 123, 255, 0.1); padding: 1rem; border-radius: 6px; border-left: 4px solid #007bff;">
                 <p style="margin: 0.5rem 0; color: #2c3e50; font-weight: 600;"><strong>Model Type:</strong> InceptionV3 Deep Learning</p>
                 <p style="margin: 0.5rem 0; color: #2c3e50; font-weight: 600;"><strong>Framework:</strong> TensorFlow/Keras</p>
                 <p style="margin: 0.5rem 0; color: #2c3e50; font-weight: 600;"><strong>Classes:</strong> 4 tumor types</p>
@@ -749,9 +750,9 @@ def main():
         # Privacy notice
         st.markdown("""
         <div class="success-indicator fade-in">
-            <div style="background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); padding: 1.5rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">
-                <h4 style="color: white; margin-bottom: 1rem; text-align: center; font-size: 1.2rem;">🔒 Privacy Protection Active</h4>
-                <p style="color: white; margin: 0; text-align: center; font-size: 1rem; line-height: 1.5;">
+            <div style="background: #28a745; padding: 1rem; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <h4 style="color: white; margin-bottom: 0.5rem; text-align: center; font-size: 1.1rem;">🔒 Privacy Protection Active</h4>
+                <p style="color: white; margin: 0; text-align: center; font-size: 0.9rem; line-height: 1.4;">
                     <strong>Patient privacy is protected.</strong> All uploaded images are processed locally and no patient data is stored or transmitted.
                 </p>
             </div>
