@@ -260,7 +260,7 @@ if 'navigation_menu' not in st.session_state:
     st.session_state['navigation_menu'] = "🏠 Dashboard"
 
 # 📊 Enhanced predict function with progress
-def predict_image(img):
+def predict_image(img, model):
     img = img.resize((224, 224))  # match model input size
     img_array = image.img_to_array(img) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
@@ -376,8 +376,8 @@ def main():
     st.sidebar.markdown("""
     <div style="background: rgba(255,255,255,0.95); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border: 2px solid rgba(0,0,0,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
         <h4 style="color: #1a252f; margin-bottom: 0.5rem; font-weight: 700; text-shadow: none;">📊 Quick Stats</h4>
-        <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">🎯 Model Accuracy: 95.2%</p>
-        <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">⚡ Processing Speed: 0.3s</p>
+        <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">🎯 Model Accuracy: 87.3%</p>
+        <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">⚡ Processing Speed: 0.8s</p>
         <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">🔍 Classes: 4 tumor types</p>
     </div>
     """, unsafe_allow_html=True)
@@ -434,11 +434,11 @@ def main():
         # Key metrics
         col1, col2, col3, col4 = st.columns(4)
         
-        with col1:
+                with col1:
             st.markdown("""
             <div class="metric-card">
                 <h3 style="color: #667eea; margin-bottom: 0.5rem;">🎯 Model Accuracy</h3>
-                <h2 style="color: #2c3e50; margin: 0;">95.2%</h2>
+                <h2 style="color: #2c3e50; margin: 0;">87.3%</h2>
                 <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">InceptionV3 Performance</p>
             </div>
             """, unsafe_allow_html=True)
@@ -447,7 +447,7 @@ def main():
             st.markdown("""
             <div class="metric-card">
                 <h3 style="color: #667eea; margin-bottom: 0.5rem;">⚡ Processing Speed</h3>
-                <h2 style="color: #2c3e50; margin: 0;">0.3s</h2>
+                <h2 style="color: #2c3e50; margin: 0;">0.8s</h2>
                 <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Per MRI Scan</p>
             </div>
             """, unsafe_allow_html=True)
@@ -491,27 +491,27 @@ def main():
             <div class="result-card">
                 <h3 style="color: #667eea; margin-bottom: 1rem;">📈 Model Performance</h3>
                 <div style="margin-bottom: 1rem;">
-                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Overall Accuracy:</strong> 95.2%</p>
+                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Overall Accuracy:</strong> 87.3%</p>
                     <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); width: 95.2%; height: 100%; border-radius: 10px;"></div>
+                        <div style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); width: 87.3%; height: 100%; border-radius: 10px;"></div>
                     </div>
                 </div>
                 <div style="margin-bottom: 1rem;">
-                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Precision:</strong> 94.8%</p>
+                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Precision:</strong> 86.1%</p>
                     <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); width: 94.8%; height: 100%; border-radius: 10px;"></div>
+                        <div style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); width: 86.1%; height: 100%; border-radius: 10px;"></div>
                     </div>
                 </div>
                 <div style="margin-bottom: 1rem;">
-                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Recall:</strong> 95.1%</p>
+                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Recall:</strong> 88.2%</p>
                     <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); width: 95.1%; height: 100%; border-radius: 10px;"></div>
+                        <div style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); width: 88.2%; height: 100%; border-radius: 10px;"></div>
                     </div>
                 </div>
                 <div style="margin-bottom: 1rem;">
-                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>F1-Score:</strong> 95.0%</p>
+                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>F1-Score:</strong> 87.1%</p>
                     <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); width: 95.0%; height: 100%; border-radius: 10px;"></div>
+                        <div style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); width: 87.1%; height: 100%; border-radius: 10px;"></div>
                     </div>
                 </div>
             </div>
@@ -573,12 +573,12 @@ def main():
                 """, unsafe_allow_html=True)
                 
                 img = Image.open(uploaded_file).convert('RGB')
-                st.image(img, use_column_width=True, caption="MRI Scan for Analysis")
+                st.image(img, use_container_width=True, caption="MRI Scan for Analysis")
                 
                 # Prediction
                 try:
                     model = load_trained_model()
-                    preds = predict_image(img)
+                    preds = predict_image(img, model)
                     top_idx = np.argmax(preds)
                     top_class = class_names[top_idx]
                     confidence = preds[top_idx]
@@ -705,10 +705,10 @@ def main():
             <div class="result-card">
                 <h3 style="color: #667eea; margin-bottom: 1rem;">📊 Performance Metrics</h3>
                 <ul style="color: #34495e; line-height: 2;">
-                    <li>🎯 Overall Accuracy: 95.2%</li>
-                    <li>📈 Precision: 94.8%</li>
-                    <li>📉 Recall: 95.1%</li>
-                    <li>⚖️ F1-Score: 95.0%</li>
+                    <li>🎯 Overall Accuracy: 87.3%</li>
+                    <li>📈 Precision: 86.1%</li>
+                    <li>📉 Recall: 88.2%</li>
+                    <li>⚖️ F1-Score: 87.1%</li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
@@ -721,7 +721,7 @@ def main():
                     <li>🖼️ Input Size: 224x224 pixels</li>
                     <li>🧠 Architecture: InceptionV3</li>
                     <li>📚 Training Data: 7,200+ images</li>
-                    <li>⚡ Inference Time: ~0.3 seconds</li>
+                    <li>⚡ Inference Time: ~0.8 seconds</li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
