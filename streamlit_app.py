@@ -238,35 +238,43 @@ def load_trained_model():
     except:
         return load_model('brain_tumor_inceptionv3.h5')
 
-# 🏷 Class names with descriptions
+# 🏷 Class names with detailed descriptions
 class_info = {
     'glioma': {
         'name': 'Glioma',
-        'description': 'A type of tumor that occurs in the brain and spinal cord',
+        'description': 'Gliomas are tumors that arise from glial cells in the brain and spinal cord. They are the most common type of primary brain tumor in adults. Gliomas can be classified into different grades (I-IV) based on their aggressiveness. Grade I and II are considered low-grade, while Grade III and IV are high-grade gliomas. Symptoms may include headaches, seizures, personality changes, and neurological deficits depending on the tumor location.',
         'color': '#e74c3c',
         'icon': '🔴',
-        'severity': 'High'
+        'severity': 'High',
+        'treatment': 'Treatment typically involves surgery, radiation therapy, and chemotherapy. The specific approach depends on the tumor grade, location, and patient factors.',
+        'prognosis': 'Prognosis varies significantly based on tumor grade and type. Low-grade gliomas have better outcomes, while high-grade gliomas (like glioblastoma) have more aggressive behavior.'
     },
     'meningioma': {
         'name': 'Meningioma',
-        'description': 'A tumor that forms on membranes covering the brain and spinal cord',
+        'description': 'Meningiomas are tumors that develop from the meninges, the protective membranes covering the brain and spinal cord. They are usually benign (non-cancerous) and slow-growing. Most meningiomas are found incidentally during imaging for other conditions. Common symptoms include headaches, vision problems, hearing loss, and personality changes. They are more common in women and typically occur in middle-aged to older adults.',
         'color': '#f39c12',
         'icon': '🟡',
-        'severity': 'Medium'
+        'severity': 'Medium',
+        'treatment': 'Treatment options include observation for small, asymptomatic tumors, surgery for larger or symptomatic tumors, and radiation therapy. Complete surgical removal is often curative.',
+        'prognosis': 'Most meningiomas are benign with excellent long-term survival rates. However, some may recur or require multiple treatments over time.'
     },
     'notumor': {
         'name': 'No Tumor',
-        'description': 'Normal brain tissue with no tumor detected',
+        'description': 'Normal brain tissue with no evidence of tumor or abnormal growth detected. The brain appears healthy with normal anatomical structures and no signs of mass lesions, bleeding, or other pathological findings.',
         'color': '#27ae60',
         'icon': '🟢',
-        'severity': 'None'
+        'severity': 'None',
+        'treatment': 'No treatment required. Regular follow-up imaging may be recommended based on clinical history and risk factors.',
+        'prognosis': 'Excellent prognosis with normal brain function expected.'
     },
     'pituitary': {
-        'name': 'Pituitary',
-        'description': 'A tumor in the pituitary gland at the base of the brain',
+        'name': 'Pituitary Adenoma',
+        'description': 'Pituitary adenomas are tumors that develop in the pituitary gland, a small pea-sized gland located at the base of the brain. The pituitary gland is often called the "master gland" because it controls other hormone-producing glands in the body. These tumors can be functioning (produce excess hormones) or non-functioning (do not produce hormones). Common symptoms include vision problems, headaches, fatigue, and hormonal imbalances affecting growth, reproduction, and metabolism.',
         'color': '#9b59b6',
         'icon': '🟣',
-        'severity': 'Medium'
+        'severity': 'Medium',
+        'treatment': 'Treatment options include surgery (often through the nose), medication to control hormone production, and radiation therapy. The approach depends on tumor size, hormone production, and symptoms.',
+        'prognosis': 'Most pituitary adenomas are benign and treatable. With proper treatment, many patients experience significant improvement in symptoms and quality of life.'
     }
 }
 
@@ -578,8 +586,12 @@ def main():
                     st.markdown(f"""
                     <div class="result-card">
                         <h4 style="color: #2c3e50;">ℹ️ About {class_info[top_class]['name']}</h4>
-                        <p style="color: #7f8c8d;">{class_info[top_class]['description']}</p>
-                        <p style="color: #7f8c8d;"><strong>Severity Level:</strong> {class_info[top_class]['severity']}</p>
+                        <p style="color: #7f8c8d; line-height: 1.6; margin-bottom: 1rem;">{class_info[top_class]['description']}</p>
+                        <div style="background: rgba(52, 152, 219, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #3498db; margin-bottom: 1rem;">
+                            <p style="color: #2c3e50; margin: 0.5rem 0;"><strong>Severity Level:</strong> {class_info[top_class]['severity']}</p>
+                            <p style="color: #2c3e50; margin: 0.5rem 0;"><strong>Treatment:</strong> {class_info[top_class]['treatment']}</p>
+                            <p style="color: #2c3e50; margin: 0.5rem 0;"><strong>Prognosis:</strong> {class_info[top_class]['prognosis']}</p>
+                        </div>
                     </div>
                     """, unsafe_allow_html=True)
                     
@@ -590,46 +602,6 @@ def main():
                 if 'preds' in locals():
                     # Charts
                     create_prediction_chart(preds)
-                    
-                    # Additional insights
-                    st.markdown("""
-                    <div class="result-card">
-                        <h4 style="color: #2c3e50;">📋 Analysis Summary</h4>
-                    </div>
-                    """, unsafe_allow_html=True)
-                    
-                    # Show confidence levels
-                    confidence_level = "High" if confidence > 0.8 else "Medium" if confidence > 0.6 else "Low"
-                    confidence_color = "#27ae60" if confidence > 0.8 else "#f39c12" if confidence > 0.6 else "#e74c3c"
-                    
-                    st.markdown(f"""
-                    <div style="background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 10px; margin: 0.5rem 0;">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-weight: 600; color: #2c3e50;">Confidence Level:</span>
-                            <span style="font-weight: bold; color: {confidence_color};">{confidence_level}</span>
-                        </div>
-                    </div>
-                    """, unsafe_allow_html=True)
-                    
-                    # Risk assessment
-                    if top_class == 'notumor':
-                        st.markdown("""
-                        <div class="success-indicator fade-in">
-                            ✅ LOW RISK - No tumor detected
-                        </div>
-                        """, unsafe_allow_html=True)
-                    elif confidence > 0.8:
-                        st.markdown("""
-                        <div class="warning-indicator fade-in">
-                            ⚠️ HIGH CONFIDENCE - Medical review recommended
-                        </div>
-                        """, unsafe_allow_html=True)
-                    else:
-                        st.markdown("""
-                        <div class="info-indicator fade-in">
-                            ℹ️ MEDIUM CONFIDENCE - Further analysis suggested
-                        </div>
-                        """, unsafe_allow_html=True)
 
         else:
             # Upload prompt
