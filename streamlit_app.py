@@ -26,7 +26,7 @@ uploaded_file = st.sidebar.file_uploader("Choose a brain MRI image", type=['jpg'
 # 🧬 Load model (cached for speed)
 @st.cache_resource
 def load_trained_model():
-    return load_model('brain_tumor_inceptionv3.h5')
+    return load_model('brain_tumor_inceptionv3.keras')
 
 model = load_trained_model()
 
@@ -64,3 +64,4 @@ else:
 # 📌 Footer
 st.markdown("---")
 st.caption("Made with ❤️ by [Your Name or Team] • Powered by Streamlit & TensorFlow")
+
