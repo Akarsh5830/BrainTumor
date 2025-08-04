@@ -1,3 +1,4 @@
+```python
 import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.models import load_model
@@ -5,8 +6,6 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 from PIL import Image
 import time
-import matplotlib.pyplot as plt
-import seaborn as sns
 from datetime import datetime
 
 # 🎨 Page config with wide layout
@@ -282,7 +281,7 @@ class_names = list(class_info.keys())
 
 # Force default page on first visit or reload
 if 'navigation_menu' not in st.session_state:
-    st.session_state['navigation_menu'] = "🏠 Dashboard"
+    st.session_state['navigation_menu'] = "🏠 Home"
 
 # 📊 Enhanced predict function with progress
 def predict_image(img, model):
@@ -330,8 +329,6 @@ def create_prediction_chart(preds):
         </div>
         """, unsafe_allow_html=True)
 
-
-
 # 🎯 Main App
 def main():
     # Sidebar navigation with clean styling
@@ -344,10 +341,8 @@ def main():
 
     # Navigation with icons and descriptions
     nav_options = {
-        "🏠 Dashboard": "Overview & Analytics",
-        "🔍 Single Analysis": "Individual MRI Analysis", 
-        "📊 Batch Analysis": "Multiple MRI Processing",
-        "📈 Model Insights": "Performance & Features",
+        "🏠 Home": "Overview & Model Insights",
+        "🔍 Analyze": "Individual MRI Analysis", 
         "⚙️ Settings": "Configuration & Info"
     }
 
@@ -385,19 +380,13 @@ def main():
     with st.sidebar.expander("❓ Quick Help", expanded=False):
         st.markdown("""
         <div style="background: rgba(255,255,255,0.95); padding: 0.5rem; border-radius: 5px; margin-bottom: 0.5rem; border: 1px solid rgba(0,0,0,0.2);">
-            <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>🔍 Single Analysis:</strong> Upload individual MRI for analysis</p>
+            <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>🏠 Home:</strong> App overview and model performance metrics.</p>
         </div>
         <div style="background: rgba(255,255,255,0.95); padding: 0.5rem; border-radius: 5px; margin-bottom: 0.5rem; border: 1px solid rgba(0,0,0,0.2);">
-            <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>📊 Batch Analysis:</strong> Process multiple MRI files</p>
-        </div>
-        <div style="background: rgba(255,255,255,0.95); padding: 0.5rem; border-radius: 5px; margin-bottom: 0.5rem; border: 1px solid rgba(0,0,0,0.2);">
-            <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>📈 Model Insights:</strong> View performance metrics</p>
-        </div>
-        <div style="background: rgba(255,255,255,0.95); padding: 0.5rem; border-radius: 5px; margin-bottom: 0.5rem; border: 1px solid rgba(0,0,0,0.2);">
-            <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>⚙️ Settings:</strong> Configure model parameters</p>
+            <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>🔍 Analyze:</strong> Upload an individual MRI for analysis</p>
         </div>
         <div style="background: rgba(255,255,255,0.95); padding: 0.5rem; border-radius: 5px; border: 1px solid rgba(0,0,0,0.2);">
-            <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>🔒 Privacy:</strong> Patient data is automatically protected</p>
+            <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.85rem; font-weight: 600; text-shadow: none;"><strong>⚙️ Settings:</strong> App information and privacy details</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -413,7 +402,7 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    if page == "🏠 Dashboard":
+    if page == "🏠 Home":
         # Main header
         st.markdown("""
         <div class="main-header fade-in">
@@ -423,7 +412,7 @@ def main():
         """, unsafe_allow_html=True)
         
         # Key metrics with real performance values
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2, col3 = st.columns(3)
         
         with col1:
             st.markdown("""
@@ -437,22 +426,13 @@ def main():
         with col2:
             st.markdown("""
             <div class="metric-card">
-                <h3 style="color: #3498db; margin-bottom: 0.5rem;">🎯 Precision</h3>
-                <h2 style="color: #2c3e50; margin: 0;">82.0%</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Model Precision</p>
+                <h3 style="color: #3498db; margin-bottom: 0.5rem;">📊 F1 Score</h3>
+                <h2 style="color: #2c3e50; margin: 0;">81.0%</h2>
+                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Weighted Average</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col3:
-            st.markdown("""
-            <div class="metric-card">
-                <h3 style="color: #3498db; margin-bottom: 0.5rem;">📈 Recall</h3>
-                <h2 style="color: #2c3e50; margin: 0;">82.0%</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Model Recall</p>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        with col4:
             st.markdown("""
             <div class="metric-card">
                 <h3 style="color: #3498db; margin-bottom: 0.5rem;">⚡ Response Time</h3>
@@ -508,10 +488,10 @@ def main():
             </div>
             """, unsafe_allow_html=True)
 
-    elif page == "🔍 Single Analysis":
+    elif page == "🔍 Analyze":
         st.markdown("""
         <div class="main-header fade-in">
-            <h1>🔍 Single MRI Analysis</h1>
+            <h1>🔍 MRI Analysis</h1>
             <p>Upload an individual MRI scan for detailed tumor analysis</p>
         </div>
         """, unsafe_allow_html=True)
@@ -576,9 +556,9 @@ def main():
 
                     # Success message
                     st.markdown(f"""
-                    <div class="success-message">
-                        {class_info[top_class]['icon']} <strong>Prediction: {class_info[top_class]['name']}</strong><br>
-                        Confidence: {confidence*100:.1f}%
+                    <div style="background: rgba(52, 152, 219, 0.1); padding: 1rem; border-radius: 10px; margin-top: 1rem; border-left: 4px solid {class_info[top_class]['color']};">
+                        <h4 style="color: {class_info[top_class]['color']}; margin-bottom: 0.5rem;">{class_info[top_class]['icon']} Prediction: {class_info[top_class]['name']}</h4>
+                        <p style="color: #2c3e50; font-weight: bold; margin: 0;">Confidence: {confidence*100:.1f}%</p>
                     </div>
                     """, unsafe_allow_html=True)
                     
@@ -606,123 +586,14 @@ def main():
         else:
             # Upload prompt
             st.markdown("""
-            <div class="upload-card">
+            <div class="result-card fade-in">
                 <h3 style="color: #2c3e50;">📤 Upload Your MRI Image</h3>
-                <p style="color: #7f8c8d;">Use the file uploader above to upload a brain MRI image for analysis</p>
-                <div style="font-size: 4rem; margin: 2rem 0;">🧠</div>
-                <p style="color: #7f8c8d; font-size: 0.9rem;">
+                <p style="color: #7f8c8d;">Use the file uploader above to upload a brain MRI image for analysis.</p>
+                <div style="font-size: 4rem; margin: 2rem 0; text-align: center;">🧠</div>
+                <p style="color: #7f8c8d; font-size: 0.9rem; text-align: center;">
                     Supported formats: JPG, PNG, JPEG<br>
                     Recommended: Clear, high-resolution images
                 </p>
-            </div>
-            """, unsafe_allow_html=True)
-
-    elif page == "📊 Batch Analysis":
-        st.markdown("""
-        <div class="main-header fade-in">
-            <h1>📊 Batch MRI Analysis</h1>
-            <p>Process multiple MRI scans for bulk tumor detection</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown("""
-        <div class="info-indicator fade-in">
-            <h3>📋 Batch Processing Coming Soon</h3>
-            <p>This feature will allow you to upload multiple MRI files for bulk analysis.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-    elif page == "📈 Model Insights":
-        st.markdown("""
-        <div class="main-header fade-in">
-            <h1>📈 Model Insights</h1>
-            <p>Understanding the AI model's performance and capabilities</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown("""
-        <div class="result-card fade-in">
-            <h3 style="color: #4facfe; margin-bottom: 1rem;">🎯 Model Architecture</h3>
-            <p style="color: #34495e; line-height: 1.6;">
-                <strong>InceptionV3:</strong> A deep convolutional neural network architecture developed by Google. 
-                It uses inception modules to efficiently process images at multiple scales simultaneously.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Performance metrics with real values
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            st.markdown("""
-            <div class="result-card">
-                <h3 style="color: #4facfe; margin-bottom: 1rem;">📊 Detailed Performance</h3>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
-                        <thead>
-                            <tr style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); color: white;">
-                                <th style="padding: 12px; text-align: left; border-radius: 8px 0 0 0;">Class</th>
-                                <th style="padding: 12px; text-align: center;">Precision</th>
-                                <th style="padding: 12px; text-align: center;">Recall</th>
-                                <th style="padding: 12px; text-align: center;">F1-Score</th>
-                                <th style="padding: 12px; text-align: center; border-radius: 0 8px 0 0;">Support</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style="background: rgba(231, 76, 60, 0.1);">
-                                <td style="padding: 10px; font-weight: 600; color: #e74c3c;">🔴 Glioma</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 600;">85.0%</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 600;">78.0%</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 600;">81.0%</td>
-                                <td style="padding: 10px; text-align: center;">244</td>
-                            </tr>
-                            <tr style="background: rgba(243, 156, 18, 0.1);">
-                                <td style="padding: 10px; font-weight: 600; color: #f39c12;">🟡 Meningioma</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 600;">74.0%</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 600;">55.0%</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 600;">63.0%</td>
-                                <td style="padding: 10px; text-align: center;">249</td>
-                            </tr>
-                            <tr style="background: rgba(39, 174, 96, 0.1);">
-                                <td style="padding: 10px; font-weight: 600; color: #27ae60;">🟢 No Tumor</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 600;">94.0%</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 600;">89.0%</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 600;">91.0%</td>
-                                <td style="padding: 10px; text-align: center;">348</td>
-                            </tr>
-                            <tr style="background: rgba(155, 89, 182, 0.1);">
-                                <td style="padding: 10px; font-weight: 600; color: #9b59b6;">🟣 Pituitary</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 600;">73.0%</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 600;">97.0%</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 600;">83.0%</td>
-                                <td style="padding: 10px; text-align: center;">301</td>
-                            </tr>
-                            <tr style="background: rgba(52, 152, 219, 0.1); border-top: 2px solid #3498db;">
-                                <td style="padding: 10px; font-weight: 700; color: #3498db;">📊 Overall</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 700;">82.0%</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 700;">82.0%</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 700;">81.0%</td>
-                                <td style="padding: 10px; text-align: center; font-weight: 700;">1,142</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        with col2:
-            st.markdown("""
-            <div class="result-card">
-                <h3 style="color: #3498db; margin-bottom: 1rem;">🔧 Technical Details</h3>
-                <ul style="color: #34495e; line-height: 2;">
-                    <li>🖼️ Input Size: 224x224 pixels</li>
-                    <li>🧠 Architecture: InceptionV3</li>
-                    <li>📚 Training Dataset: 10,000 images</li>
-                    <li>📊 Test Dataset: 1,142 images</li>
-                    <li>⚡ Inference Time: ~0.8 seconds</li>
-                    <li>🎯 Macro Avg F1: 80.0%</li>
-                    <li>⚖️ Weighted Avg F1: 81.0%</li>
-                </ul>
             </div>
             """, unsafe_allow_html=True)
 
@@ -734,6 +605,7 @@ def main():
         </div>
         """, unsafe_allow_html=True)
         
+        # System Information
         st.markdown("""
         <div class="result-card fade-in">
             <h3 style="color: #4facfe; margin-bottom: 1rem;">📋 System Information</h3>
@@ -747,6 +619,19 @@ def main():
         </div>
         """, unsafe_allow_html=True)
         
+        # About section with centered layout
+        st.markdown("""
+        <div class="result-card fade-in" style="text-align: center;">
+            <h2 style="color: #2c3e50; margin-bottom: 1.5rem;">About the Brain Tumor Detector 🧠</h2>
+            <p style="color: #34495e; font-size: 1.1rem; line-height: 1.8; text-align: justify; display: inline-block; max-width: 800px;">
+                The Brain Tumor Detector is an **AI-powered system** designed to assist medical professionals in the rapid analysis of brain MRI scans. Leveraging a sophisticated **InceptionV3 deep learning model**, this application can accurately classify MRI images into one of four categories: **Glioma**, **Meningioma**, **Pituitary**, or **No Tumor**.
+            </p>
+            <p style="color: #34495e; font-size: 1.1rem; line-height: 1.8; text-align: justify; display: inline-block; max-width: 800px;">
+                Our model was trained on a comprehensive dataset of over 10,000 images, achieving an overall accuracy of **82.0%**. This tool aims to provide a reliable, fast, and user-friendly interface for preliminary diagnosis, helping to streamline the workflow in clinical settings. The system is built with a focus on privacy, ensuring that all image processing is done locally and no patient data is stored or transmitted.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
         # Privacy notice
         st.markdown("""
         <div class="success-indicator fade-in">
@@ -761,3 +646,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+```
