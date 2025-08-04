@@ -1,4 +1,3 @@
-```python
 import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.models import load_model
@@ -647,3 +646,4 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
