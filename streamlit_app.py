@@ -153,7 +153,7 @@ def load_trained_model():
     try:
         return load_model('brain_tumor_inceptionv3.keras')
     except:
-        return load_model('brain_tumor_inceptionv3.h5')
+        return load_model('brain_tumor_inceptionv3.keras')
 
 # 🏷 Class names with descriptions
 class_info = {
@@ -424,7 +424,7 @@ def main():
     st.markdown("""
     <div class="footer">
         <p style="color: #7f8c8d; margin: 0;">
-            Made with ❤️ by AI Medical Team • Powered by Streamlit & TensorFlow<br>
+            Made with ❤️ by Akarsh Yadav • Powered by Streamlit & TensorFlow<br>
             <small>For educational and research purposes only. Always consult healthcare professionals for medical decisions.</small>
         </p>
     </div>
@@ -432,3 +432,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
