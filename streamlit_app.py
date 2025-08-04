@@ -1,3 +1,4 @@
+
 import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.models import load_model
@@ -143,11 +144,6 @@ st.markdown("""
         transform: translateY(-3px);
         box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
         background: linear-gradient(90deg, #2980b9 0%, #1f5f8b 100%);
-    }
-
-    .stButton > button:active {
-        transform: translateY(-1px);
-        box-shadow: 0 3px 10px rgba(52, 152, 219, 0.4);
     }
     
     /* Progress bar styling - Professional */
@@ -302,12 +298,14 @@ def predict_image(img, model):
 
 # 📈 Create beautiful charts using Streamlit components
 def create_prediction_chart(preds):
+    # Create a simple bar chart using Streamlit's built-in components
     st.markdown("""
     <div class="result-card">
         <h4 style="color: #2c3e50; text-align: center;">📊 Prediction Confidence by Class</h4>
     </div>
     """, unsafe_allow_html=True)
     
+    # Sort predictions for better visualization
     sorted_indices = np.argsort(preds)[::-1]
     
     for idx in sorted_indices:
@@ -356,6 +354,7 @@ def main():
         key="navigation_menu"
     )
 
+    # Add a separator
     st.sidebar.markdown("---")
 
     # Quick stats in sidebar with real performance values
@@ -404,47 +403,91 @@ def main():
     """, unsafe_allow_html=True)
 
     if page == "🏠 Home":
+        # Main header
         st.markdown("""
         <div class="main-header fade-in">
             <h1 style="text-shadow: 3px 3px 6px rgba(0,0,0,0.4); font-weight: 800;">🧠 Brain Tumor Detector</h1>
             <p style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3); font-weight: 500;">AI-Powered Brain Tumor Detection System</p>
         </div>
         """, unsafe_allow_html=True)
+        
+        # Key metrics with real performance values
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.markdown("""
+            <div class="metric-card">
+                <h3 style="color: #3498db; margin-bottom: 0.5rem;">🎯 Model Accuracy</h3>
+                <h2 style="color: #2c3e50; margin: 0;">82.0%</h2>
+                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Overall Performance</p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("""
+            <div class="metric-card">
+                <h3 style="color: #3498db; margin-bottom: 0.5rem;">📊 F1 Score</h3>
+                <h2 style="color: #2c3e50; margin: 0;">81.0%</h2>
+                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Weighted Average</p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col3:
+            st.markdown("""
+            <div class="metric-card">
+                <h3 style="color: #3498db; margin-bottom: 0.5rem;">⚡ Response Time</h3>
+                <h2 style="color: #2c3e50; margin: 0;">0.8s</h2>
+                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Per Analysis</p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        # Features section
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            <div class="result-card">
+                <h3 style="color: #4facfe; margin-bottom: 1rem;">🎯 Tumor Classification</h3>
+                <ul style="color: #34495e; line-height: 2;">
+                    <li>🔴 Glioma - Brain & Spinal Cord</li>
+                    <li>🟡 Meningioma - Brain Membranes</li>
+                    <li>🟢 No Tumor - Normal Tissue</li>
+                    <li>🟣 Pituitary - Pituitary Gland</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("""
+            <div class="result-card">
+                <h3 style="color: #3498db; margin-bottom: 1rem;">📈 Model Performance</h3>
+                <div style="margin-bottom: 1rem;">
+                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Overall Accuracy:</strong> 82.0%</p>
+                    <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
+                        <div style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); width: 82.0%; height: 100%; border-radius: 10px;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Macro Avg F1:</strong> 80.0%</p>
+                    <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
+                        <div style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); width: 80.0%; height: 100%; border-radius: 10px;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Weighted Avg F1:</strong> 81.0%</p>
+                    <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
+                        <div style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); width: 81.0%; height: 100%; border-radius: 10px;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Test Samples:</strong> 1,142</p>
+                    <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
+                        <div style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); width: 100%; height: 100%; border-radius: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
 
-        # Main overview section
-        st.markdown("""
-        <div class="result-card fade-in" style="text-align: center;">
-            <h2 style="color: #2c3e50; margin-bottom: 1.5rem;">A Powerful Tool for Medical Image Analysis</h2>
-            <p style="color: #34495e; font-size: 1.1rem; line-height: 1.8; text-align: justify; display: inline-block; max-width: 800px;">
-                The Brain Tumor Detector is an **AI-powered system** designed to assist medical professionals in the rapid analysis of brain MRI scans. Leveraging a sophisticated **InceptionV3 deep learning model**, this application can accurately classify MRI images into one of four categories: **Glioma**, **Meningioma**, **Pituitary**, or **No Tumor**.
-            </p>
-            <p style="color: #34495e; font-size: 1.1rem; line-height: 1.8; text-align: justify; display: inline-block; max-width: 800px;">
-                Our model was trained on a comprehensive dataset of over 10,000 images, achieving an overall accuracy of **82.0%**. This tool aims to provide a reliable, fast, and user-friendly interface for preliminary diagnosis, helping to streamline the workflow in clinical settings. The system is built with a focus on privacy, ensuring that all image processing is done locally and no patient data is stored or transmitted.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        # Call to action
-        st.markdown("""
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="?page=Analyze" target="_self" style="text-decoration: none;">
-                <button style="
-                    background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
-                    color: white;
-                    border: none;
-                    border-radius: 30px;
-                    padding: 1rem 3rem;
-                    font-weight: 600;
-                    font-size: 1.2rem;
-                    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                ">Start MRI Analysis 🚀</button>
-            </a>
-        </div>
-        """, unsafe_allow_html=True)
-    
     elif page == "🔍 Analyze":
         st.markdown("""
         <div class="main-header fade-in">
@@ -470,15 +513,18 @@ def main():
         )
         
         if uploaded_file is not None:
+            # Show upload success
             st.markdown("""
             <div class="success-indicator fade-in">
                 ✅ MRI uploaded successfully! Processing your scan...
             </div>
             """, unsafe_allow_html=True)
             
+            # Progress bar
             progress_bar = st.progress(0)
             status_text = st.empty()
             
+            # Simulate processing steps
             steps = ["Loading image...", "Preprocessing...", "Running AI analysis...", "Generating results..."]
             
             for i, step in enumerate(steps):
@@ -486,9 +532,11 @@ def main():
                 progress_bar.progress((i + 1) * 25)
                 time.sleep(0.5)
             
+            # Main content area
             col1, col2 = st.columns([1, 1])
             
             with col1:
+                # Display uploaded image
                 st.markdown("""
                 <div class="result-card">
                     <h3 style="color: #2c3e50; text-align: center;">📷 Uploaded MRI Scan</h3>
@@ -498,6 +546,7 @@ def main():
                 img = Image.open(uploaded_file).convert('RGB')
                 st.image(img, use_container_width=True, caption="MRI Scan for Analysis")
 
+                # Prediction
                 try:
                     model = load_trained_model()
                     preds = predict_image(img, model)
@@ -505,6 +554,7 @@ def main():
                     top_class = class_names[top_idx]
                     confidence = preds[top_idx]
 
+                    # Success message
                     st.markdown(f"""
                     <div style="background: rgba(52, 152, 219, 0.1); padding: 1rem; border-radius: 10px; margin-top: 1rem; border-left: 4px solid {class_info[top_class]['color']};">
                         <h4 style="color: {class_info[top_class]['color']}; margin-bottom: 0.5rem;">{class_info[top_class]['icon']} Prediction: {class_info[top_class]['name']}</h4>
@@ -512,11 +562,12 @@ def main():
                     </div>
                     """, unsafe_allow_html=True)
                     
+                    # Class description
                     st.markdown(f"""
-                    <div class="result-card" style="text-align: center;">
+                    <div class="result-card">
                         <h4 style="color: #2c3e50;">ℹ️ About {class_info[top_class]['name']}</h4>
-                        <p style="color: #7f8c8d; line-height: 1.6; margin-bottom: 1rem; text-align: left;">{class_info[top_class]['description']}</p>
-                        <div style="background: rgba(52, 152, 219, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #3498db; margin-bottom: 1rem; text-align: left;">
+                        <p style="color: #7f8c8d; line-height: 1.6; margin-bottom: 1rem;">{class_info[top_class]['description']}</p>
+                        <div style="background: rgba(52, 152, 219, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #3498db; margin-bottom: 1rem;">
                             <p style="color: #2c3e50; margin: 0.5rem 0;"><strong>Severity Level:</strong> {class_info[top_class]['severity']}</p>
                             <p style="color: #2c3e50; margin: 0.5rem 0;"><strong>Treatment:</strong> {class_info[top_class]['treatment']}</p>
                             <p style="color: #2c3e50; margin: 0.5rem 0;"><strong>Prognosis:</strong> {class_info[top_class]['prognosis']}</p>
@@ -529,9 +580,11 @@ def main():
             
             with col2:
                 if 'preds' in locals():
+                    # Charts
                     create_prediction_chart(preds)
 
         else:
+            # Upload prompt
             st.markdown("""
             <div class="result-card fade-in">
                 <h3 style="color: #2c3e50;">📤 Upload Your MRI Image</h3>
@@ -552,6 +605,7 @@ def main():
         </div>
         """, unsafe_allow_html=True)
         
+        # System Information
         st.markdown("""
         <div class="result-card fade-in">
             <h3 style="color: #4facfe; margin-bottom: 1rem;">📋 System Information</h3>
@@ -565,6 +619,20 @@ def main():
         </div>
         """, unsafe_allow_html=True)
         
+        # About section with centered layout
+        st.markdown("""
+        <div class="result-card fade-in" style="text-align: center;">
+            <h2 style="color: #2c3e50; margin-bottom: 1.5rem;">About the Brain Tumor Detector 🧠</h2>
+            <p style="color: #34495e; font-size: 1.1rem; line-height: 1.8; text-align: justify; display: inline-block; max-width: 800px;">
+                The Brain Tumor Detector is an **AI-powered system** designed to assist medical professionals in the rapid analysis of brain MRI scans. Leveraging a sophisticated **InceptionV3 deep learning model**, this application can accurately classify MRI images into one of four categories: **Glioma**, **Meningioma**, **Pituitary**, or **No Tumor**.
+            </p>
+            <p style="color: #34495e; font-size: 1.1rem; line-height: 1.8; text-align: justify; display: inline-block; max-width: 800px;">
+                Our model was trained on a comprehensive dataset of over 10,000 images, achieving an overall accuracy of **82.0%**. This tool aims to provide a reliable, fast, and user-friendly interface for preliminary diagnosis, helping to streamline the workflow in clinical settings. The system is built with a focus on privacy, ensuring that all image processing is done locally and no patient data is stored or transmitted.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        # Privacy notice
         st.markdown("""
         <div class="success-indicator fade-in">
             <div style="background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); padding: 1.5rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">
@@ -578,4 +646,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
