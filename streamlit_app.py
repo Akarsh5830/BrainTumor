@@ -17,12 +17,12 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 🎨 Custom CSS for modern styling with updated color scheme
+# 🎨 Custom CSS for professional template
 st.markdown("""
 <style>
-    /* Main page background - Better contrast */
+    /* Main page background - Professional gradient */
     .main .block-container {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
         min-height: 100vh;
         padding-top: 1rem;
         padding-bottom: 1rem;
@@ -30,7 +30,7 @@ st.markdown("""
     
     /* Improve overall page styling */
     .stApp {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     }
     
     /* Better text contrast */
@@ -63,85 +63,99 @@ st.markdown("""
         text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     }
     
-    /* Main container styling - Better contrast */
+    /* Main container styling - Professional */
     .main-header {
-        background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
-        padding: 2rem;
-        border-radius: 15px;
-        margin-bottom: 2rem;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        background: linear-gradient(90deg, #2c3e50 0%, #34495e 100%);
+        padding: 2.5rem;
+        border-radius: 20px;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.1);
     }
     
     .main-header h1 {
         color: white;
-        font-size: 3rem;
-        font-weight: 800;
+        font-size: 3.2rem;
+        font-weight: 700;
         text-align: center;
         margin: 0;
-        text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-        letter-spacing: 1px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        letter-spacing: 1.5px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     
     .main-header p {
-        color: rgba(255,255,255,0.95);
+        color: rgba(255,255,255,0.9);
         text-align: center;
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin: 0.5rem 0 0 0;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        font-size: 1.3rem;
+        font-weight: 400;
+        margin: 0.8rem 0 0 0;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     
-    /* Card styling - Better contrast */
+    /* Card styling - Professional */
     .metric-card {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 1.5rem;
-        border-radius: 15px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-        border-left: 5px solid #4facfe;
-        margin: 1rem 0;
+        background: rgba(255, 255, 255, 0.98);
+        padding: 1.8rem;
+        border-radius: 18px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        border-left: 6px solid #3498db;
+        margin: 1.2rem 0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .metric-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 50px rgba(0,0,0,0.2);
     }
     
     .input-card {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-        margin: 2rem 0;
+        background: rgba(255, 255, 255, 0.98);
+        padding: 2.5rem;
+        border-radius: 25px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        margin: 2.5rem 0;
+        border: 1px solid rgba(52, 152, 219, 0.1);
     }
     
     .result-card {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-        margin: 2rem 0;
+        background: rgba(255, 255, 255, 0.98);
+        padding: 2.5rem;
+        border-radius: 25px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        margin: 2.5rem 0;
+        border: 1px solid rgba(52, 152, 219, 0.1);
     }
     
-    /* Button styling - Better contrast */
+    /* Button styling - Professional */
     .stButton > button {
-        background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+        background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
         color: white;
         border: none;
-        border-radius: 25px;
-        padding: 0.75rem 2rem;
+        border-radius: 30px;
+        padding: 0.8rem 2.2rem;
         font-weight: 600;
-        box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+        font-size: 1rem;
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
         transition: all 0.3s ease;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     
     .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(79, 172, 254, 0.6);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        background: linear-gradient(90deg, #2980b9 0%, #1f5f8b 100%);
     }
     
-    /* Progress bar styling - Better contrast */
+    /* Progress bar styling - Professional */
     .stProgress > div > div > div > div {
-        background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+        background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
     }
     
-    /* Sidebar styling - Better contrast */
+    /* Sidebar styling - Professional */
     .css-1d391kg {
-        background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
     }
     
     /* Improve sidebar text visibility */
@@ -343,11 +357,11 @@ def create_radar_chart_alternative(preds):
 
 # 🎯 Main App
 def main():
-    # Sidebar navigation with better contrast styling
+    # Sidebar navigation with professional styling
     st.sidebar.markdown("""
-    <div style="text-align: center; padding: 1.5rem; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 6px 20px rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.1);">
-        <h2 style="color: white; margin-bottom: 0.5rem; font-size: 1.5rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">🧠 Brain Tumor Detector</h2>
-        <p style="color: rgba(255,255,255,0.95); margin: 0; font-size: 0.9rem; font-weight: 500; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">AI-Powered Detection System</p>
+    <div style="text-align: center; padding: 1.8rem; background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); border-radius: 18px; margin-bottom: 2.5rem; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);">
+        <h2 style="color: white; margin-bottom: 0.8rem; font-size: 1.6rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.4); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">🧠 Brain Tumor Detector</h2>
+        <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 1rem; font-weight: 400; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">AI-Powered Detection System</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -375,8 +389,8 @@ def main():
     st.sidebar.markdown("""
     <div style="background: rgba(255,255,255,0.95); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border: 2px solid rgba(0,0,0,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
         <h4 style="color: #1a252f; margin-bottom: 0.5rem; font-weight: 700; text-shadow: none;">📊 Quick Stats</h4>
-        <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">🎯 Model Accuracy: 94.2%</p>
-        <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">⚡ Processing Speed: 0.6s</p>
+        <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">🎯 Model Accuracy: 82.0%</p>
+        <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">⚡ Processing Speed: 0.8s</p>
         <p style="color: #1a252f; margin: 0.2rem 0; font-size: 0.9rem; font-weight: 600; text-shadow: none;">🔍 Classes: 4 tumor types</p>
     </div>
     """, unsafe_allow_html=True)
@@ -437,17 +451,17 @@ def main():
         with col1:
             st.markdown("""
             <div class="metric-card">
-                <h3 style="color: #4facfe; margin-bottom: 0.5rem;">🎯 Model Accuracy</h3>
-                <h2 style="color: #2c3e50; margin: 0;">94.2%</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">InceptionV3 Performance</p>
+                <h3 style="color: #3498db; margin-bottom: 0.5rem;">🎯 Model Accuracy</h3>
+                <h2 style="color: #2c3e50; margin: 0;">82.0%</h2>
+                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Overall Performance</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col2:
             st.markdown("""
             <div class="metric-card">
-                <h3 style="color: #4facfe; margin-bottom: 0.5rem;">⚡ Processing Speed</h3>
-                <h2 style="color: #2c3e50; margin: 0;">0.6s</h2>
+                <h3 style="color: #3498db; margin-bottom: 0.5rem;">⚡ Processing Speed</h3>
+                <h2 style="color: #2c3e50; margin: 0;">0.8s</h2>
                 <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Per MRI Scan</p>
             </div>
             """, unsafe_allow_html=True)
@@ -455,7 +469,7 @@ def main():
         with col3:
             st.markdown("""
             <div class="metric-card">
-                <h3 style="color: #4facfe; margin-bottom: 0.5rem;">🔍 Tumor Types</h3>
+                <h3 style="color: #3498db; margin-bottom: 0.5rem;">🔍 Tumor Types</h3>
                 <h2 style="color: #2c3e50; margin: 0;">4</h2>
                 <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Detectable Classes</p>
             </div>
@@ -464,9 +478,9 @@ def main():
         with col4:
             st.markdown("""
             <div class="metric-card">
-                <h3 style="color: #4facfe; margin-bottom: 0.5rem;">📊 Dataset</h3>
-                <h2 style="color: #2c3e50; margin: 0;">8.5K</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Training Images</p>
+                <h3 style="color: #3498db; margin-bottom: 0.5rem;">📊 Dataset</h3>
+                <h2 style="color: #2c3e50; margin: 0;">1.1K</h2>
+                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Test Images</p>
             </div>
             """, unsafe_allow_html=True)
         
@@ -489,29 +503,29 @@ def main():
         with col2:
             st.markdown("""
             <div class="result-card">
-                <h3 style="color: #4facfe; margin-bottom: 1rem;">📈 Model Performance</h3>
+                <h3 style="color: #3498db; margin-bottom: 1rem;">📈 Model Performance</h3>
                 <div style="margin-bottom: 1rem;">
-                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Overall Accuracy:</strong> 94.2%</p>
+                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Overall Accuracy:</strong> 82.0%</p>
                     <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); width: 94.2%; height: 100%; border-radius: 10px;"></div>
+                        <div style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); width: 82.0%; height: 100%; border-radius: 10px;"></div>
                     </div>
                 </div>
                 <div style="margin-bottom: 1rem;">
-                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Precision:</strong> 93.8%</p>
+                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Macro Avg F1:</strong> 80.0%</p>
                     <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); width: 93.8%; height: 100%; border-radius: 10px;"></div>
+                        <div style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); width: 80.0%; height: 100%; border-radius: 10px;"></div>
                     </div>
                 </div>
                 <div style="margin-bottom: 1rem;">
-                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Recall:</strong> 94.5%</p>
+                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Weighted Avg F1:</strong> 81.0%</p>
                     <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); width: 94.5%; height: 100%; border-radius: 10px;"></div>
+                        <div style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); width: 81.0%; height: 100%; border-radius: 10px;"></div>
                     </div>
                 </div>
                 <div style="margin-bottom: 1rem;">
-                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>F1-Score:</strong> 94.1%</p>
+                    <p style="margin: 0.5rem 0; color: #34495e;"><strong>Test Samples:</strong> 1,142</p>
                     <div style="background: #ecf0f1; border-radius: 10px; height: 8px;">
-                        <div style="background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); width: 94.1%; height: 100%; border-radius: 10px;"></div>
+                        <div style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); width: 100%; height: 100%; border-radius: 10px;"></div>
                     </div>
                 </div>
             </div>
@@ -703,13 +717,57 @@ def main():
         with col1:
             st.markdown("""
             <div class="result-card">
-                <h3 style="color: #4facfe; margin-bottom: 1rem;">📊 Performance Metrics</h3>
-                <ul style="color: #34495e; line-height: 2;">
-                    <li>🎯 Overall Accuracy: 94.2%</li>
-                    <li>📈 Precision: 93.8%</li>
-                    <li>📉 Recall: 94.5%</li>
-                    <li>⚖️ F1-Score: 94.1%</li>
-                </ul>
+                <h3 style="color: #4facfe; margin-bottom: 1rem;">📊 Detailed Performance</h3>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                        <thead>
+                            <tr style="background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); color: white;">
+                                <th style="padding: 12px; text-align: left; border-radius: 8px 0 0 0;">Class</th>
+                                <th style="padding: 12px; text-align: center;">Precision</th>
+                                <th style="padding: 12px; text-align: center;">Recall</th>
+                                <th style="padding: 12px; text-align: center;">F1-Score</th>
+                                <th style="padding: 12px; text-align: center; border-radius: 0 8px 0 0;">Support</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: rgba(231, 76, 60, 0.1);">
+                                <td style="padding: 10px; font-weight: 600; color: #e74c3c;">🔴 Glioma</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 600;">85.0%</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 600;">78.0%</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 600;">81.0%</td>
+                                <td style="padding: 10px; text-align: center;">244</td>
+                            </tr>
+                            <tr style="background: rgba(243, 156, 18, 0.1);">
+                                <td style="padding: 10px; font-weight: 600; color: #f39c12;">🟡 Meningioma</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 600;">74.0%</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 600;">55.0%</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 600;">63.0%</td>
+                                <td style="padding: 10px; text-align: center;">249</td>
+                            </tr>
+                            <tr style="background: rgba(39, 174, 96, 0.1);">
+                                <td style="padding: 10px; font-weight: 600; color: #27ae60;">🟢 No Tumor</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 600;">94.0%</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 600;">89.0%</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 600;">91.0%</td>
+                                <td style="padding: 10px; text-align: center;">348</td>
+                            </tr>
+                            <tr style="background: rgba(155, 89, 182, 0.1);">
+                                <td style="padding: 10px; font-weight: 600; color: #9b59b6;">🟣 Pituitary</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 600;">73.0%</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 600;">97.0%</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 600;">83.0%</td>
+                                <td style="padding: 10px; text-align: center;">301</td>
+                            </tr>
+                            <tr style="background: rgba(79, 172, 254, 0.1); border-top: 2px solid #4facfe;">
+                                <td style="padding: 10px; font-weight: 700; color: #4facfe;">📊 Overall</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 700;">82.0%</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 700;">82.0%</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 700;">81.0%</td>
+                                <td style="padding: 10px; text-align: center; font-weight: 700;">1,142</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             """, unsafe_allow_html=True)
         
@@ -720,8 +778,10 @@ def main():
                 <ul style="color: #34495e; line-height: 2;">
                     <li>🖼️ Input Size: 224x224 pixels</li>
                     <li>🧠 Architecture: InceptionV3</li>
-                    <li>📚 Training Data: 8,500+ images</li>
-                    <li>⚡ Inference Time: ~0.6 seconds</li>
+                    <li>📚 Test Dataset: 1,142 images</li>
+                    <li>⚡ Inference Time: ~0.8 seconds</li>
+                    <li>🎯 Macro Avg F1: 80.0%</li>
+                    <li>⚖️ Weighted Avg F1: 81.0%</li>
                 </ul>
             </div>
             """, unsafe_allow_html=True)
