@@ -437,27 +437,27 @@ def main():
         with col2:
             st.markdown("""
             <div class="metric-card">
-                <h3 style="color: #3498db; margin-bottom: 0.5rem;">⚡ Processing Speed</h3>
-                <h2 style="color: #2c3e50; margin: 0;">0.8s</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Per MRI Scan</p>
+                <h3 style="color: #3498db; margin-bottom: 0.5rem;">🎯 Precision</h3>
+                <h2 style="color: #2c3e50; margin: 0;">82.0%</h2>
+                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Model Precision</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col3:
             st.markdown("""
             <div class="metric-card">
-                <h3 style="color: #3498db; margin-bottom: 0.5rem;">🔍 Tumor Types</h3>
-                <h2 style="color: #2c3e50; margin: 0;">4</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Detectable Classes</p>
+                <h3 style="color: #3498db; margin-bottom: 0.5rem;">📈 Recall</h3>
+                <h2 style="color: #2c3e50; margin: 0;">82.0%</h2>
+                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Model Recall</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col4:
             st.markdown("""
             <div class="metric-card">
-                <h3 style="color: #3498db; margin-bottom: 0.5rem;">📊 Dataset</h3>
-                <h2 style="color: #2c3e50; margin: 0;">1.1K</h2>
-                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Test Images</p>
+                <h3 style="color: #3498db; margin-bottom: 0.5rem;">⚡ Response Time</h3>
+                <h2 style="color: #2c3e50; margin: 0;">0.8s</h2>
+                <p style="color: #7f8c8d; font-size: 0.9rem; margin: 0;">Per Analysis</p>
             </div>
             """, unsafe_allow_html=True)
         
@@ -660,7 +660,7 @@ def main():
                 <div style="overflow-x: auto;">
                     <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
                         <thead>
-                            <tr style="background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); color: white;">
+                            <tr style="background: linear-gradient(90deg, #3498db 0%, #2980b9 100%); color: white;">
                                 <th style="padding: 12px; text-align: left; border-radius: 8px 0 0 0;">Class</th>
                                 <th style="padding: 12px; text-align: center;">Precision</th>
                                 <th style="padding: 12px; text-align: center;">Recall</th>
@@ -697,8 +697,8 @@ def main():
                                 <td style="padding: 10px; text-align: center; font-weight: 600;">83.0%</td>
                                 <td style="padding: 10px; text-align: center;">301</td>
                             </tr>
-                            <tr style="background: rgba(79, 172, 254, 0.1); border-top: 2px solid #4facfe;">
-                                <td style="padding: 10px; font-weight: 700; color: #4facfe;">📊 Overall</td>
+                            <tr style="background: rgba(52, 152, 219, 0.1); border-top: 2px solid #3498db;">
+                                <td style="padding: 10px; font-weight: 700; color: #3498db;">📊 Overall</td>
                                 <td style="padding: 10px; text-align: center; font-weight: 700;">82.0%</td>
                                 <td style="padding: 10px; text-align: center; font-weight: 700;">82.0%</td>
                                 <td style="padding: 10px; text-align: center; font-weight: 700;">81.0%</td>
@@ -713,11 +713,12 @@ def main():
         with col2:
             st.markdown("""
             <div class="result-card">
-                <h3 style="color: #4facfe; margin-bottom: 1rem;">🔧 Technical Details</h3>
+                <h3 style="color: #3498db; margin-bottom: 1rem;">🔧 Technical Details</h3>
                 <ul style="color: #34495e; line-height: 2;">
                     <li>🖼️ Input Size: 224x224 pixels</li>
                     <li>🧠 Architecture: InceptionV3</li>
-                    <li>📚 Test Dataset: 1,142 images</li>
+                    <li>📚 Training Dataset: 10,000 images</li>
+                    <li>📊 Test Dataset: 1,142 images</li>
                     <li>⚡ Inference Time: ~0.8 seconds</li>
                     <li>🎯 Macro Avg F1: 80.0%</li>
                     <li>⚖️ Weighted Avg F1: 81.0%</li>
