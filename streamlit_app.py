@@ -322,38 +322,7 @@ def create_prediction_chart(preds):
         </div>
         """, unsafe_allow_html=True)
 
-def create_radar_chart_alternative(preds):
-    st.markdown("""
-    <div class="result-card">
-        <h4 style="color: #2c3e50; text-align: center;">🎯 Prediction Distribution</h4>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Create vertically stacked prediction blocks
-    radar_html = """
-    <div style="background: #ffffff; padding: 1.5rem; border-radius: 15px; text-align: center;">
-        <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem;">
-    """
-    
-    for i, (cls, prob) in enumerate(zip(class_names, preds)):
-        color = class_info[cls]['color']
-        icon = class_info[cls]['icon']
-        name = class_info[cls]['name']
-        
-        radar_html += f"""
-        <div style="background: {color}; color: white; padding: 0.75rem; border-radius: 6px; text-align: center;">
-            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">{icon}</div>
-            <div style="font-weight: 600; margin-bottom: 0.25rem; font-size: 0.9rem;">{name}</div>
-            <div style="font-size: 1.2rem; font-weight: 600;">{prob*100:.1f}%</div>
-        </div>
-        """
-    
-    radar_html += """
-        </div>
-    </div>
-    """
-    
-    st.markdown(radar_html, unsafe_allow_html=True)
+
 
 # 🎯 Main App
 def main():
@@ -621,8 +590,6 @@ def main():
                 if 'preds' in locals():
                     # Charts
                     create_prediction_chart(preds)
-                    st.markdown("<br>", unsafe_allow_html=True)
-                    create_radar_chart_alternative(preds)
                     
                     # Additional insights
                     st.markdown("""
