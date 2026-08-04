@@ -140,10 +140,33 @@ streamlit run app.py
 
 # 📁 Dataset
 
-The project uses the **Brain Tumor MRI Dataset** available on Kaggle.
+This project uses the **Brain Tumor MRI Dataset** containing four MRI image categories:
 
-> The dataset is not included in this repository because of its size.
+- 🧠 Glioma
+- 🧠 Meningioma
+- 🧠 Pituitary Tumor
+- ✅ No Tumor
 
+### Dataset Summary
+
+| Class | Description |
+|-------|-------------|
+| Glioma | MRI scans with Glioma tumors |
+| Meningioma | MRI scans with Meningioma tumors |
+| Pituitary | MRI scans with Pituitary tumors |
+| No Tumor | Healthy brain MRI scans |
+
+### Dataset Size
+
+- Total Images: **7,000+ MRI images** (approximately, depending on the dataset version)
+- Image Format: JPG
+- Image Size: 224 × 224 pixels (after preprocessing)
+- Train/Test Split: Used during model training in the notebook
+
+> **Note:** The dataset is not included in this repository because of its size. It can be downloaded from the original Kaggle source.
+
+**Dataset Source:** Masoud Nickparvar's Brain Tumor MRI Dataset. :contentReference[oaicite:0]{index=0}
+https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset
 ---
 
 # 🛠️ Technologies Used
