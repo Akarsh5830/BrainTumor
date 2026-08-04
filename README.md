@@ -57,7 +57,7 @@ The model classifies MRI images into:
 
 ## Training Accuracy
 
-![Training Accuracy](images/training_accuracy.png)
+![Training Accuracy](images/traning_accuracy.png)
 
 ---
 
