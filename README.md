@@ -4,7 +4,7 @@
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)
 ![Keras](https://img.shields.io/badge/Keras-Deep%20Learning-red.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Web%20App-FF4B4B.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg) 
 
 ## 📌 Project Overview
 
